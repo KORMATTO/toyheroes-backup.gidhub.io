@@ -1,0 +1,1167 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>ToyHeroes - Online Toy Shooter</title>
+	<link rel="canonical" href="https://toyheroes.net" />
+        <meta name="keywords" content="toyheroes, toy, heroes, toys,free, fun, online, play, video, game, gamer, download, computer, pc, shooter, shooting, fps, tps, mmo, mmorpg, rpg, action, 3d, team, toy, war, battle, soldier, figure, stikfas, doll, story, multiplayer, single, player, clan, e-sports, global, world, gun, melee, shotgun, rifle, sniper, gatling, bazooka, grenade, death, match, deathmatch, competitive, competition, casual, core, social, smash, item, battery, shield, enamel, ammo, respawn, frag, headshot, customize, weapons, parts, chip, naomi, knox, pandora, have, reloaded, wakui, akira, brawl, buster, rock, hippo, trailer, update, register"/>
+        <meta name="description" content="Build your action figure and battle players around the world to become a ToyHeroes legend!"/>
+    <link href="css/toyheroes.css" rel="stylesheet" type="text/css">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+    <script src="js/toyheroes_quicklogin.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121881171-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-121881171-1');
+  function worldClock(zone, region) {
+    var dst = 0;
+    var time = new Date();
+    var gmtMS = time.getTime() + (time.getTimezoneOffset() * 60000);
+    var gmtTime = new Date(gmtMS);
+    var day = gmtTime.getDate();
+    var month = gmtTime.getMonth();
+    var year = gmtTime.getYear();
+    if (year < 1000) {
+        year += 1900;
+    }
+    var monthArray = new Array("January", "February", "March", "April", "May", "June", "July", "August",
+				"September", "October", "November", "December");
+    var monthDays = new Array("31", "28", "31", "30", "31", "30", "31", "31", "30", "31", "30", "31");
+    if (year % 4 == 0) {
+        monthDays = new Array("31", "29", "31", "30", "31", "30", "31", "31", "30", "31", "30", "31");
+    }
+    if (year % 100 == 0 && year % 400 != 0) {
+        monthDays = new Array("31", "28", "31", "30", "31", "30", "31", "31", "30", "31", "30", "31");
+    }
+    var hr = gmtTime.getHours() + zone;
+    var min = gmtTime.getMinutes();
+    var sec = gmtTime.getSeconds();
+    if (hr >= 24) {
+        hr = hr - 24;
+        day -= -1;
+    }
+    if (hr < 0) {
+        hr -= -24;
+        day -= 1;
+    }
+    if (hr < 10) {
+        hr = " " + hr;
+    }
+    if (min < 10) {
+        min = "0" + min;
+    }
+    if (sec < 10) {
+        sec = "0" + sec;
+    }
+    if (day <= 0) {
+        if (month == 0) {
+            month = 11;
+            year -= 1;
+        }
+        else {
+            month = month - 1;
+        }
+        day = monthDays[month];
+    }
+    if (day > monthDays[month]) {
+        day = 1;
+        if (month == 11) {
+            month = 0;
+            year -= -1;
+        }
+        else {
+            month -= -1;
+        }
+    }
+    if (region == "NAmerica") {
+        if (DST()) {
+            dst = 1;
+        }
+    }
+    if (dst == 1) {
+        hr -= -1;
+        if (hr >= 24) {
+            hr = hr - 24;
+            day -= -1;
+        }
+        if (hr < 10) {
+            hr = " " + hr;
+        }
+        if (day > monthDays[month]) {
+            day = 1;
+            if (month == 11) {
+                month = 0;
+                year -= -1;
+            }
+            else {
+                month -= -1;
+            }
+        }
+        var apm = " AM";
+        if (hr >= 12) {
+            if (hr > 12) {
+                hr = hr - 12;
+            }
+            apm = " PM";
+        }
+        return hr + ":" + min + ":" + sec + apm + " (EDT)";
+    }
+    else {
+        var apm = " AM";
+        if (hr >= 12) {
+            if (hr > 12) {
+                hr = hr - 12;
+            }
+            apm = " PM";
+        }
+        return hr + ":" + min + ":" + sec + apm + " (CET)";
+    }
+}
+function worldClockZone() {
+    var divClock = document.getElementById("clockText");
+    if (divClock) {
+        divClock.innerHTML = worldClock(2, "Europe");
+        setTimeout("worldClockZone()", 1000);
+    }
+}
+function open_signoff_dropdown() {
+        if (document.getElementById('signoff-dropdown').style.display == "block")
+            document.getElementById('signoff-dropdown').style.display = 'none';
+        else
+            document.getElementById('signoff-dropdown').style.display = "block";
+    }
+</script>
+<style>
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #272727;
+  border:1px solid #404040;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+  top:20px;
+  left:0px;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.arrow-down {
+    width: 0px;
+    height: 0px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #e8e8e8;
+    margin-left:5px;
+}
+.menulinktext:hover {
+    color:white!important;
+}
+.dottedline {
+    border:none;
+  border-bottom:1px dotted gray;
+  color:#fff;
+  height:1px;
+  width:100%;
+}
+.hoverscale:hover {
+    transform: scale(1.1);
+}
+</style>
+</style>
+</head>
+<body>
+    <div class="layout_wrapper">
+        <div class="home_header_wrapper">
+            <div class="header_top_nav">
+                <div class="nav_top_wrapper">
+                    <div class="nav_top_container">
+                        <div class="player_info">
+                            <div class="left side">
+                            </div>
+                            <div class="middle" id="mainLogin" style="position:relative;">
+                                                            <form id="mainLoginForm" action="" method="post">
+                                    <div class="ajaxLoadingMaskQuick" style="width: 100%; height: 100%; z-index: 1000; position: absolute; top: 0px; left: 0px; background-image: url(img/spacer.gif); background-repeat: repeat; display: none;">
+                                        <img alt="" class="ajaxLoading" style="margin-left: 197px; margin-top: 28px; position: absolute; height:18px; width:18px;" src="img/ajaxLoading2.gif">
+                                    </div>
+                                    <div style="position:relative; width:220px;">
+                                        <div class="login_info1">
+                                            <div class="icon_rh"></div>
+                                            <div style="margin-bottom: 2px;float: left; ">
+                                                <input onkeypress="if (event.keyCode == 13) onButtonQuickLoginClick();" name="userName" type="text" value="Login ID" onblur="if (this.value == '') {this.value = 'Login ID';}" onfocus="if (this.value == 'Login ID') {this.value = '';}" class="text_box" maxlength="16" style="color: rgb(204, 204, 204);"></div>
+                                            <div class="password" style="float: left; ">
+                                                <input id="fakepw" name="fakedPasswordInput" type="text" value="Password" onfocus="this.parentNode.style.display='none'; document.getElementById('realpw').parentNode.style.display='block'; document.getElementById('realpw').focus();" class="text_box" style="color: rgb(204, 204, 204);"></div>
+                                            <div class="password" style="display: none;float: left;">
+                                                <input onkeypress="if (event.keyCode == 13) onButtonQuickLoginClick();" id="realpw" name="password" type="password" value="" class="text_box" maxlength="32" style="color: rgb(204, 204, 204);" onblur="if (this.value == '') { this.parentNode.style.display = 'none'; document.getElementById('fakepw').parentNode.style.display='block'; }"></div>
+                                            <div id="wrong_password_board" class="wrong_password wrong_passwordid ErrorMsg" style="display: none;">
+                                                <div class="topleft"></div>
+                                                <div id="msgLogin" class="topmiddle">Invalid Login ID and/or Password.</div>
+                                                <div class="topright"></div>
+                                            </div>
+                                        </div>
+                                        <div class="login_info2">
+                                                <div class="row1">
+                                                        <a href="help" style="font-size:11px;margin-left:2px;" tabindex="1">Need help?</a>
+                                                    </div>
+                                            <div class="row1 " style=" width:85px;">
+                                                <a onclick="onButtonQuickLoginClick();" style="margin-right: 8px;" class="login2 formSubmitBtn" tabindex="0"><span class="left"></span>
+                                                    <span class="middle"><span style="position:relative;top:1px;">Login</span></span><span class="right"></span>
+                                                </a>
+                                            </div>
+                                            <div id="quickloginbuttonmask" style="position:absolute;top:21px;left:132px;width:60px;height:19px;background-color:rgb(0 0 0 / 41%);border-radius:0px;display:none"></div>
+                                        </div>
+                                    </div>
+                                </form>
+                                                            </div>
+                            <div class="right side">
+                            </div>
+                        </div>
+                        <div style="display:inline-block;float:right;position:relative;top:3px;margin-left:10px;cursor:not-allowed"><img src="img/language.png"/></div>
+                        left
+                        <div style="display:inline-block;float:right;position:relative;top:7px;"><img src="img/clock1.png"/><span id="clockText" style="width: 105px;font-size: 11px;font-family: Arial, Helvetica, sans-serif;color:#999;position:relative;top:-6px;margin-left:5px;">123</span></div>
+                                            ight;
+                                            </div>
+                </div>
+            </div>
+            <div class="header_bottom">
+                <div class="home_header_middle">
+                    <a href="/">
+                        <div class="bb_logo">
+                        </div>
+                    </a>
+                </div>
+                <div class="nav">
+                    <div class="nav_container">
+                        <div class="ddsmoothmenu" id="smoothmenu1">
+                            <ul>
+                                <li>
+                                    <div class="nav_divider">
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="btn_nav_home_en">
+                                    <a href="/" class=""><span class="btn_nav_hide">Home</span></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="nav_divider">
+                                    </div>
+                                </li>
+                                <li style="margin-right:20px">
+                                    <div class="btn_nav_download_en">
+                                        <a href="download" class=""><span class="btn_nav_hide">Download</span></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="nav_divider">
+                                    </div>
+                                </li>
+                                <li style="margin-right:20px">
+                                    <div class="btn_nav_clubhouse_en">
+                                        <a href="club_player" class=""><span class="btn_nav_hide">Club House</span></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="nav_divider">
+                                    </div>
+                                </li>
+                                <li style="margin-right:20px">
+                                    <div class="btn_nav_guide_en">
+                                        <a href="guide" class=""><span class="btn_nav_hide">Guide</span></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="nav_divider">
+                                    </div>
+                                </li>
+                                <li style="margin-right:20px">
+                                    <div class="btn_nav_media_en">
+                                        <a href="media" class=""><span class="btn_nav_hide">Media</span></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="nav_divider">
+                                    </div>
+                                </li>
+                                <li style="margin-right:20px">
+                                    <div class="btn_nav_support_en">
+                                        <a href="support" class=""><span class="btn_nav_hide">Support</span></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="nav_divider">
+                                    </div>
+                                </li>
+                                <li style="margin-right:20px">
+                                    <div class="btn_nav_deposit_en">
+                                        <a href="purchase" class=""><span class="btn_nav_hide">Charge RT</span></a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>worldClockZone();</script>
+        <script>
+        function select_main_nav(name)
+        {
+            document.getElementsByClassName(name)[0].style.backgroundPosition = '0px bottom'
+        }
+        </script>
+        <div class="main_content_wrapper">
+<link href="css/toyheroes_index.css" rel="stylesheet" type="text/css">
+<style>
+.sb_top {
+    background-image: url(img/side_bar_bg.png);
+    background-repeat: no-repeat;
+    background-position: left top;
+    height: 9px;
+    width: 220px;
+    float: left;
+}
+.sb_middle {
+    background-image: url(img/side_bar_bg.png);
+    background-repeat: repeat-y;
+    background-position: right top;
+    width: 190px;
+    float: left;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.sb_bottom {
+    background-image: url(img/side_bar_bg.png);
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    height: 9px;
+    width: 220px;
+    float: left;
+}
+.cont1 {
+    float: right;
+    width: 220px;
+}
+.sb_update {
+    display: table;
+}
+.sb_update a:first-child {
+    background-image: url(img/btn_sb_update_en.png);
+    background-position: left top;
+    background-repeat: no-repeat;
+    float: left;
+    height: 47px;
+    width: 190px;
+}
+.sb_update a {
+    background-image: url(img/btn_sb_default.png);
+    background-position: left top;
+    background-repeat: no-repeat;
+    float: left;
+    height: 37px;
+    width: 190px;
+    margin-bottom: 3px;
+    display: block;
+    clear: both;
+    position: relative;
+}
+.sb_update a:hover {
+    background-position: left bottom;
+}
+.sb_update .icon {
+    background-position: left top;
+    background-repeat: no-repeat;
+    float: left;
+    height: 30px;
+    width: 30px;
+    position: relative;
+    margin: 4px 7px 0px 4px;
+    top:-1px;
+}
+.sb_update .icon.Redeem {
+    background-image: url(img/btn_sb_icon_redeem.png);
+}
+.sb_update .icon.MvLive {
+    background-image: url(img/btn_sb_icon_mv_live.png);
+}
+.sb_update .icon.Lollipop {
+    background-image: url(img/btn_sb_icon_free_lollipop.png);
+}
+.sb_update .date {
+    top: 27px;
+    left: 45px;
+    color: #300000;
+    font-size: 11px;
+    font-weight: bold;
+    width: 135px;
+    position: absolute;
+}
+.sb_update .text {
+    color: #0D202F;
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    display: table;
+    float: left;
+    margin-top: 10px;
+}
+.topcontainermiddle {
+    background-image: url(img/home_container1_bg_middle.jpg);
+    background-repeat: repeat-x;
+    background-position: left top;
+}
+.viewall:hover {
+    color:#a0a0a0!important;
+}
+.social_network_container {
+    background-image: url(img/home_sn_bg.png);
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    float: left;
+    height: 2px;
+    width: 203px;
+    display: table;
+}
+.social_network_container .sn_btns {
+    height: 33px;
+    overflow: hidden;
+}
+.sn_btns {
+    display: table;
+    height: 30px;
+}
+.sn_btns .icon {
+    float: left;
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    margin: 0px 4px 0px 4px;
+    position: relative;
+}
+.social_network_container .icon {
+    width: 33px;
+    height: 33px;
+    float: left;
+    margin-left: 4px;
+}
+.sn_btns A {
+    display: block;
+}
+.sn_btns img {
+    border: 0px;
+}
+.sn_btns img:hover {
+    object-fit: none;
+    object-position: 0px -32px;
+}
+.name-link:hover {
+    /* color: gray; */
+    color: #f60!important;
+}
+.floatanimation {
+    -webkit-animation: float 2.5s ease-in-out infinite alternate;
+    animation: float 2.5s ease-in-out infinite alternate;
+}
+@-webkit-keyframes float {
+  0% {
+    margin-top:0px;
+  }
+  50% {
+    margin-top:10px;
+  }
+  100% {
+    margin-top:0px;
+  }
+}
+@keyframes float {
+  0% {
+    margin-top:0px;
+  }
+  50% {
+    margin-top:10px;
+  }
+  100% {
+    margin-top:0px;
+  }
+}
+@-webkit-keyframes pulse {
+  0% {
+    background-color: #3c92ff99;
+  }
+  50% {
+    background-color: #5fa6ffb3;
+  }
+  100% {
+    background-color: #7eb7ff99;
+  }
+}
+@keyframes pulse {
+  0% {
+    background-color: #3c92ff99;
+  }
+  50% {
+    background-color: #5fa6ffb3;
+  }
+  100% {
+    background-color: #7eb7ff99;
+  }
+}
+.hotcontainerelement
+{
+    width:102px;
+    height:84px;
+    margin-left:auto;
+    margin-right:auto;
+    border-radius: 3px;
+    user-select:none;
+    /*background-color:#3c92ff99;
+    border-color:#87aee1a3;*/
+}
+.hotcontainerelement:hover {
+    cursor:pointer;
+    background-color:#f9f9f999;
+    border-color:#87aee1a3;
+}
+</style>
+<div class="top_wrapper" style="height:272px;width:960px;">
+    <div class="top" style="height:272px;width:960px;">
+        <div class="left">
+        </div>
+        <div class="middle topcontainermiddle" style="width:952px;">
+            <div class="col1" style="margin-left:5px;margin-right:10px;">
+                <a href="register">
+                    <div class="btn_register">
+                    </div>
+                </a>
+                <a href="download">
+                    <div class="btn_download">
+                    </div>
+                </a>
+                <a href="register">
+                    <div style="margin: 10px  10px 10px  20px; width: 160px; height: 100px; cursor: pointer;">
+                    </div>
+                </a>
+            </div>
+            <div class="col2">
+                <iframe src="banner" width="740" height="252" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+            </div>
+        </div>
+        <div class="right">
+        </div>
+    </div>
+    <div class="bottom">
+    </div>
+</div>
+<div class="bottom_wrapper" style="height:550px;border-top:none;background-image: url(img/bg_transparent2.png)">
+    <div class="left_container" style="width:945px;height:245px;margin-left:2px;background-image:none;margin-top:3px;">
+        <div class="content1_info_container">
+            <div class="social_network_container" style="position:absolute;width:203px;">        
+               <div style="padding: 6px 0px 6px 8px; clear: both;padding-left:20px;">
+                   <div class="sn_btns" style=" margin-left:0px; min-width:160px;">
+                        <div class="icon">
+                        <a target="_blank" href="https://www.facebook.com/ToyheroesEPT/">
+                            <img src="img/btn_sn_facebook_small.png"></a></div>
+                        <div class="icon">
+                        <a href="#">
+                            <img src="img/btn_sn_youtube_small.png"></a></div>
+                        <div class="icon">
+                        <a href="#">
+                            <img src="img/btn_sn_twitter_small.png"></a></div>
+                        <div class="icon">
+                        <a href="#">
+                            <img src="img/btn_sn_googleplus_small.png"></a></div>
+                        <!--<div class="icon">
+                        <a target="_blank" href="#">
+                            <img src="/img/btn_sn_raptr_small.png"></a></div>-->
+                    </div>
+                </div>
+                <a href="club_player"><div style="height:500px;background-color:#00000054;background-image:url(img/front_banner_left2.png);background-position-x:right">
+                </div></a>
+           </div>
+            <div style="position:relative;left:210px;top:5px;">
+<script>
+    function isIE () {
+    var myNav = navigator.userAgent.toLowerCase();
+    return (myNav.indexOf('msie') != -1) ? parseInt(myNav.split('msie')[1]) : false;
+    }
+    function show_news_tab(id)
+    {
+        for (i = 0; i < 5; i++)
+        {
+            document.getElementById("news_group_" + i).style.display = "none";
+            if (!isIE())
+            {
+                document.getElementsByClassName("btn_news_tabs")[i].getElementsByClassName("btn_news_tabs_left")[0].style.backgroundPosition = null;
+                document.getElementsByClassName("btn_news_tabs")[i].getElementsByClassName("btn_news_tabs_middle")[0].style.backgroundPosition = null;
+                document.getElementsByClassName("btn_news_tabs")[i].getElementsByClassName("btn_news_tabs_right")[0].style.backgroundPosition = null;
+            }
+        }
+        document.getElementById("news_group_" + id).style.display = "block";
+        if (!isIE())
+        {
+            document.getElementsByClassName("btn_news_tabs")[id].getElementsByClassName("btn_news_tabs_left")[0].style.backgroundPosition = "bottom right";
+            document.getElementsByClassName("btn_news_tabs")[id].getElementsByClassName("btn_news_tabs_middle")[0].style.backgroundPosition = "bottom right";
+            document.getElementsByClassName("btn_news_tabs")[id].getElementsByClassName("btn_news_tabs_right")[0].style.backgroundPosition = "bottom right";
+        }
+    }
+    function open_news_link(url)
+    {
+        if (!isIE())
+        {
+        }
+    }
+</script>
+<style>
+.morenewslink:hover {
+    color:white!important;
+}
+.blinkanim {
+    -webkit-animation:name 2s infinite;
+}
+@-webkit-keyframes name {
+    0% {background-color:rgba(0, 0, 0, 0);}
+    50% {background-color:#262626;}
+    100% {background-color:rgba(0, 0, 0, 0);}
+}
+</style>
+<link href="css/toyheroes_news.css" rel="stylesheet" type="text/css">
+<div style=" width:500px; float:left;">
+             <div class="news_tabs" style="margin-bottom:0px;width:500px;margin-top:-4px;">
+    <div style="margin-left: 0px;">
+        <a class="btn_news_tabs" onclick="show_news_tab(0);"><span class="btn_news_tabs_left"></span><span class="btn_news_tabs_middle">
+            <div class="info">
+                All</div>
+        </span><span class="btn_news_tabs_right"></span></a>
+    </div>
+    <div class="news_tabs_spacer1">
+    </div>
+        <div>
+            <a class="btn_news_tabs" onclick="show_news_tab(1);"><span class="btn_news_tabs_left"></span><span class="btn_news_tabs_middle">
+                <div class="legend_icon">
+                    <img src="img/icon_news_events_en-ge-tr.png" width="18" height="15"></div>
+                <div class="info">
+                    Events</div>
+            </span><span class="btn_news_tabs_right"></span></a>
+        </div>
+        <div class="news_tabs_spacer1">
+        </div>
+        <div>
+            <a class="btn_news_tabs" onclick="show_news_tab(2);"><span class="btn_news_tabs_left"></span><span class="btn_news_tabs_middle">
+                <div class="legend_icon">
+                    <img src="img/icon_news_announcement_en-de.png" width="18" height="15"></div>
+                <div class="info">
+                    Announcements</div>
+            </span><span class="btn_news_tabs_right"></span></a>
+        </div>
+        <div class="news_tabs_spacer1">
+        </div>
+        <div>
+            <a class="btn_news_tabs" onclick="show_news_tab(3);"><span class="btn_news_tabs_left"></span><span class="btn_news_tabs_middle">
+                <div class="legend_icon">
+                    <img src="img/icon_news_promotion_en-de-tr.png" width="18" height="15"></div>
+                <div class="info">
+                    Promotions</div>
+            </span><span class="btn_news_tabs_right"></span></a>
+        </div>
+        <div class="news_tabs_spacer1">
+        </div>
+        <div>
+            <a class="btn_news_tabs" onclick="show_news_tab(4);"><span class="btn_news_tabs_left"></span><span class="btn_news_tabs_middle">
+                <div class="legend_icon">
+                    <img src="img/icon_news_update_en-de.png" width="18" height="15"></div>
+                <div class="info">
+                    Updates</div>
+            </span><span class="btn_news_tabs_right"></span></a>
+        </div>
+        <div class="news_tabs_spacer1">
+        </div>
+    <div class="more_news">
+        <a class="morenewslink" href="announcement_id-0" style="color:#b1b1b1;color:#a1a2da;font-size:10px;">More News +</a></div>
+</div>
+                <div class="news_headline_container" style="margin-top:0px;height:180px;">
+<div id="news_group_0">
+            <div class="news_headline" onclick="open_news_link('club_news-46447');">
+            <div class="cl1">
+                                    <img width="15" height="15" src="img/icon_news_update_en-de.png">
+                            </div>
+            <div class="cl2">
+                <a href="#" onclick="open_news_link('club_news-46447');">Demonic Autumn - Patch Notes</a>
+            </div>
+            <div class="cl3">&nbsp;
+            </div>
+            <span class="cl5" style="width:0px;">
+                09/08/2023            </span>
+        </div>
+            <div class="news_headline" onclick="open_news_link('club_news-46446');">
+            <div class="cl1">
+                                    <img width="15" height="15" src="img/icon_news_events_en-ge-tr.png">
+                            </div>
+            <div class="cl2">
+                <a href="#" onclick="open_news_link('club_news-46446');">Art Contest 2023</a>
+            </div>
+            <div class="cl3">&nbsp;
+            </div>
+            <span class="cl5" style="width:0px;">
+                08/29/2023            </span>
+        </div>
+            <div class="news_headline" onclick="open_news_link('club_news-46445');">
+            <div class="cl1">
+                                    <img width="15" height="15" src="img/icon_news_update_en-de.png">
+                            </div>
+            <div class="cl2">
+                <a href="#" onclick="open_news_link('club_news-46445');">Exclusive Item Collections - Patch Notes</a>
+            </div>
+            <div class="cl3">&nbsp;
+            </div>
+            <span class="cl5" style="width:0px;">
+                08/10/2023            </span>
+        </div>
+            <div class="news_headline" onclick="open_news_link('club_news-46444');">
+            <div class="cl1">
+                                    <img width="15" height="15" src="img/icon_news_events_en-ge-tr.png">
+                            </div>
+            <div class="cl2">
+                <a href="#" onclick="open_news_link('club_news-46444');">Super Riddle Event!</a>
+            </div>
+            <div class="cl3">&nbsp;
+            </div>
+            <span class="cl5" style="width:0px;">
+                08/04/2023            </span>
+        </div>
+            <div class="news_headline" onclick="open_news_link('club_news-46443');">
+            <div class="cl1">
+                                    <img width="15" height="15" src="img/icon_news_update_en-de.png">
+                            </div>
+            <div class="cl2">
+                <a href="#" onclick="open_news_link('club_news-46443');">New Nametag Feature & More!</a>
+            </div>
+            <div class="cl3">&nbsp;
+            </div>
+            <span class="cl5" style="width:0px;">
+                07/27/2023            </span>
+        </div>
+            <div class="news_headline" onclick="open_news_link('club_news-46442');">
+            <div class="cl1">
+                                    <img width="15" height="15" src="img/icon_news_events_en-ge-tr.png">
+                            </div>
+            <div class="cl2">
+                <a href="#" onclick="open_news_link('club_news-46442');">Bonus Event: +100% XP & MP!</a>
+            </div>
+            <div class="cl3">&nbsp;
+            </div>
+            <span class="cl5" style="width:0px;">
+                07/26/2023            </span>
+        </div>
+            <div class="news_headline" onclick="open_news_link('club_news-46441');">
+            <div class="cl1">
+                                    <img width="15" height="15" src="img/icon_news_update_en-de.png">
+                            </div>
+            <div class="cl2">
+                <a href="#" onclick="open_news_link('club_news-46441');">Balancing & Capsule Collections - Patch Notes</a>
+            </div>
+            <div class="cl3">&nbsp;
+            </div>
+            <span class="cl5" style="width:0px;">
+                07/07/2023            </span>
+        </div>
+    </div>
+<div id="news_group_1" style="display:none;">
+            <div class="news_headline" onclick="open_news_link('club_news-46446');">
+            <div class="cl1">
+                <img width="15" height="15" src="img/icon_news_events_en-ge-tr.png">
+            </div>
+            <div class="cl2">
+                <a href="#" onclick="open_news_link('club_news-46446');">Art Contest 2023</a>
+            </div>
+            <div class="cl3">&nbsp;
+            </div>
+            <span class="cl5" style="width:0px;">
+                08/29/2023            </span>
+        </div>
+            <div class="news_headline" onclick="open_news_link('club_news-46444');">
+            <div class="cl1">
+                <img width="15" height="15" src="img/icon_news_events_en-ge-tr.png">
+            </div>
+            <div class="cl2">
+                <a href="#" onclick="open_news_link('club_news-46444');">Super Riddle Event!</a>
+            </div>
+            <div class="cl3">&nbsp;
+            </div>
+            <span class="cl5" style="width:0px;">
+                08/04/2023            </span>
+        </div>
+            <div class="news_headline" onclick="open_news_link('club_news-46442');">
+            <div class="cl1">
+                <img width="15" height="15" src="img/icon_news_events_en-ge-tr.png">
+            </div>
+            <div class="cl2">
+                <a href="#" onclick="open_news_link('club_news-46442');">Bonus Event: +100% XP & MP!</a>
+            </div>
+            <div class="cl3">&nbsp;
+            </div>
+            <span class="cl5" style="width:0px;">
+                07/26/2023            </span>
+        </div>
+            <div class="news_headline" onclick="open_news_link('club_news-46432');">
+            <div class="cl1">
+                <img width="15" height="15" src="img/icon_news_events_en-ge-tr.png">
+            </div>
+            <div class="cl2">
+                <a href="#" onclick="open_news_link('club_news-46432');">Colonel Crac's Riddles - Season 7</a>
+            </div>
+            <div class="cl3">&nbsp;
+            </div>
+            <span class="cl5" style="width:0px;">
+                03/02/2023            </span>
+        </div>
+            <div class="news_headline" onclick="open_news_link('club_news-46429');">
+            <div class="cl1">
+                <img width="15" height="15" src="img/icon_news_events_en-ge-tr.png">
+            </div>
+            <div class="cl2">
+                <a href="#" onclick="open_news_link('club_news-46429');">Road To Christmas: +100% Bonus Event</a>
+            </div>
+            <div class="cl3">&nbsp;
+            </div>
+            <span class="cl5" style="width:0px;">
+                12/16/2022            </span>
+        </div>
+            <div class="news_headline" onclick="open_news_link('club_news-46427');">
+            <div class="cl1">
+                <img width="15" height="15" src="img/icon_news_events_en-ge-tr.png">
+            </div>
+            <div class="cl2">
+                <a href="#" onclick="open_news_link('club_news-46427');">Colonel Crac's Riddles - Season 6</a>
+            </div>
+            <div class="cl3">&nbsp;
+            </div>
+            <span class="cl5" style="width:0px;">
+                12/01/2022            </span>
+        </div>
+            <div class="news_headline" onclick="open_news_link('club_news-46416');">
+            <div class="cl1">
+                <img width="15" height="15" src="img/icon_news_events_en-ge-tr.png">
+            </div>
+            <div class="cl2">
+                <a href="#" onclick="open_news_link('club_news-46416');">Easter Challenge</a>
+            </div>
+            <div class="cl3">&nbsp;
+            </div>
+            <span class="cl5" style="width:0px;">
+                04/18/2022            </span>
+        </div>
+    </div>
+<div id="news_group_2" style="display:none;">
+                <div class="news_headline" onclick="open_news_link('club_news-46440');">
+                <div class="cl1">
+                    <img width="15" height="15" src="img/icon_news_announcement_en-de.png">
+                </div>
+                <div class="cl2">
+                    <a href="#" onclick="open_news_link('club_news-46440');">Poll about Rifle and Explosive Balancing</a>
+                </div>
+                <div class="cl3">&nbsp;
+                </div>
+                <span class="cl5" style="width:0px;">
+                    06/29/2023                </span>
+            </div>
+                    <div class="news_headline" onclick="open_news_link('club_news-46438');">
+                <div class="cl1">
+                    <img width="15" height="15" src="img/icon_news_announcement_en-de.png">
+                </div>
+                <div class="cl2">
+                    <a href="#" onclick="open_news_link('club_news-46438');">Summer Fun! - Patch Notes</a>
+                </div>
+                <div class="cl3">&nbsp;
+                </div>
+                <span class="cl5" style="width:0px;">
+                    06/09/2023                </span>
+            </div>
+                    <div class="news_headline" onclick="open_news_link('club_news-46435');">
+                <div class="cl1">
+                    <img width="15" height="15" src="img/icon_news_announcement_en-de.png">
+                </div>
+                <div class="cl2">
+                    <a href="#" onclick="open_news_link('club_news-46435');">New Ranking System - Overview</a>
+                </div>
+                <div class="cl3">&nbsp;
+                </div>
+                <span class="cl5" style="width:0px;">
+                    03/12/2023                </span>
+            </div>
+                    <div class="news_headline" onclick="open_news_link('club_news-46433');">
+                <div class="cl1">
+                    <img width="15" height="15" src="img/icon_news_announcement_en-de.png">
+                </div>
+                <div class="cl2">
+                    <a href="#" onclick="open_news_link('club_news-46433');">New 2FA Recovery Feature</a>
+                </div>
+                <div class="cl3">&nbsp;
+                </div>
+                <span class="cl5" style="width:0px;">
+                    03/08/2023                </span>
+            </div>
+                    <div class="news_headline" onclick="open_news_link('club_news-46430');">
+                <div class="cl1">
+                    <img width="15" height="15" src="img/icon_news_announcement_en-de.png">
+                </div>
+                <div class="cl2">
+                    <a href="#" onclick="open_news_link('club_news-46430');">Christmas Capsule Collections</a>
+                </div>
+                <div class="cl3">&nbsp;
+                </div>
+                <span class="cl5" style="width:0px;">
+                    12/19/2022                </span>
+            </div>
+                    <div class="news_headline" onclick="open_news_link('club_news-46426');">
+                <div class="cl1">
+                    <img width="15" height="15" src="img/icon_news_announcement_en-de.png">
+                </div>
+                <div class="cl2">
+                    <a href="#" onclick="open_news_link('club_news-46426');">Halloween Collections - 2022</a>
+                </div>
+                <div class="cl3">&nbsp;
+                </div>
+                <span class="cl5" style="width:0px;">
+                    10/25/2022                </span>
+            </div>
+                    <div class="news_headline" onclick="open_news_link('club_news-46425');">
+                <div class="cl1">
+                    <img width="15" height="15" src="img/icon_news_announcement_en-de.png">
+                </div>
+                <div class="cl2">
+                    <a href="#" onclick="open_news_link('club_news-46425');">New MP Set Collections</a>
+                </div>
+                <div class="cl3">&nbsp;
+                </div>
+                <span class="cl5" style="width:0px;">
+                    09/09/2022                </span>
+            </div>
+        </div>
+<div id="news_group_3" style="display:none;">
+                <div class="news_headline" onclick="open_news_link('club_news-46401');">
+                <div class="cl1">
+                    <img width="15" height="15" src="img/icon_news_promotion_en-de-tr.png">
+                </div>
+                <div class="cl2">
+                    <a href="#" onclick="open_news_link('club_news-46401');">Black Friday Sales 2021</a>
+                </div>
+                <div class="cl3">&nbsp;
+                </div>
+                <span class="cl5" style="width:0px;">
+                    11/25/2021                </span>
+            </div>
+                    <div class="news_headline" onclick="open_news_link('club_news-46367');">
+                <div class="cl1">
+                    <img width="15" height="15" src="img/icon_news_promotion_en-de-tr.png">
+                </div>
+                <div class="cl2">
+                    <a href="#" onclick="open_news_link('club_news-46367');">Christmas Holiday Sales</a>
+                </div>
+                <div class="cl3">&nbsp;
+                </div>
+                <span class="cl5" style="width:0px;">
+                    12/23/2020                </span>
+            </div>
+                    <div class="news_headline" onclick="open_news_link('announcement_id-46360');">
+                <div class="cl1">
+                    <img width="15" height="15" src="img/icon_news_promotion_en-de-tr.png">
+                </div>
+                <div class="cl2">
+                    <a href="#" onclick="open_news_link('announcement_id-46360');">Black Friday Sales</a>
+                </div>
+                <div class="cl3">&nbsp;
+                </div>
+                <span class="cl5" style="width:0px;">
+                    11/26/2020                </span>
+            </div>
+                    <div class="news_headline" onclick="open_news_link('announcement_id-46320');">
+                <div class="cl1">
+                    <img width="15" height="15" src="img/icon_news_promotion_en-de-tr.png">
+                </div>
+                <div class="cl2">
+                    <a href="#" onclick="open_news_link('announcement_id-46320');">Christmas Holiday Sales</a>
+                </div>
+                <div class="cl3">&nbsp;
+                </div>
+                <span class="cl5" style="width:0px;">
+                    12/24/2019                </span>
+            </div>
+                    <div class="news_headline" onclick="open_news_link('announcement_id-46304');">
+                <div class="cl1">
+                    <img width="15" height="15" src="img/icon_news_promotion_en-de-tr.png">
+                </div>
+                <div class="cl2">
+                    <a href="#" onclick="open_news_link('announcement_id-46304');">Black Friday Sales</a>
+                </div>
+                <div class="cl3">&nbsp;
+                </div>
+                <span class="cl5" style="width:0px;">
+                    11/29/2019                </span>
+            </div>
+        </div>
+<div id="news_group_4" style="display:none;">
+                <div class="news_headline" onclick="open_news_link('club_news-46447');">
+                <div class="cl1">
+                    <img width="15" height="15" src="img/icon_news_update_en-de.png">
+                </div>
+                <div class="cl2">
+                    <a href="#" onclick="open_news_link('club_news-46447');">Demonic Autumn - Patch Notes</a>
+                </div>
+                <div class="cl3">&nbsp;
+                </div>
+                <span class="cl5" style="width:0px;">
+                    09/08/2023                </span>
+            </div>
+                    <div class="news_headline" onclick="open_news_link('club_news-46445');">
+                <div class="cl1">
+                    <img width="15" height="15" src="img/icon_news_update_en-de.png">
+                </div>
+                <div class="cl2">
+                    <a href="#" onclick="open_news_link('club_news-46445');">Exclusive Item Collections - Patch Notes</a>
+                </div>
+                <div class="cl3">&nbsp;
+                </div>
+                <span class="cl5" style="width:0px;">
+                    08/10/2023                </span>
+            </div>
+                    <div class="news_headline" onclick="open_news_link('club_news-46443');">
+                <div class="cl1">
+                    <img width="15" height="15" src="img/icon_news_update_en-de.png">
+                </div>
+                <div class="cl2">
+                    <a href="#" onclick="open_news_link('club_news-46443');">New Nametag Feature & More!</a>
+                </div>
+                <div class="cl3">&nbsp;
+                </div>
+                <span class="cl5" style="width:0px;">
+                    07/27/2023                </span>
+            </div>
+                    <div class="news_headline" onclick="open_news_link('club_news-46441');">
+                <div class="cl1">
+                    <img width="15" height="15" src="img/icon_news_update_en-de.png">
+                </div>
+                <div class="cl2">
+                    <a href="#" onclick="open_news_link('club_news-46441');">Balancing & Capsule Collections - Patch Notes</a>
+                </div>
+                <div class="cl3">&nbsp;
+                </div>
+                <span class="cl5" style="width:0px;">
+                    07/07/2023                </span>
+            </div>
+                    <div class="news_headline" onclick="open_news_link('club_news-46439');">
+                <div class="cl1">
+                    <img width="15" height="15" src="img/icon_news_update_en-de.png">
+                </div>
+                <div class="cl2">
+                    <a href="#" onclick="open_news_link('club_news-46439');">Adventures in the Heat!</a>
+                </div>
+                <div class="cl3">&nbsp;
+                </div>
+                <span class="cl5" style="width:0px;">
+                    06/27/2023                </span>
+            </div>
+                    <div class="news_headline" onclick="open_news_link('club_news-46437');">
+                <div class="cl1">
+                    <img width="15" height="15" src="img/icon_news_update_en-de.png">
+                </div>
+                <div class="cl2">
+                    <a href="#" onclick="open_news_link('club_news-46437');">Spring Collections 2023</a>
+                </div>
+                <div class="cl3">&nbsp;
+                </div>
+                <span class="cl5" style="width:0px;">
+                    04/14/2023                </span>
+            </div>
+                    <div class="news_headline" onclick="open_news_link('club_news-46436');">
+                <div class="cl1">
+                    <img width="15" height="15" src="img/icon_news_update_en-de.png">
+                </div>
+                <div class="cl2">
+                    <a href="#" onclick="open_news_link('club_news-46436');">New Barrier Mechanic - All Game Modes!</a>
+                </div>
+                <div class="cl3">&nbsp;
+                </div>
+                <span class="cl5" style="width:0px;">
+                    03/31/2023                </span>
+            </div>
+        </div>
+</div>
+</div>
+<script>
+    show_news_tab(0);
+</script>            </div>
+            <div class="cont1">
+                <div class="sb_top">
+                </div>
+                <div class="sb_middle">
+                    <div class="sb_update en">
+                        <a href="club_news-46447"><span class="icon"></span><span class="date">September 8th, 2023</span></a>
+                        <a href="login"><span class="icon Lollipop"></span><span class="text">Affiliate Program</span></a>
+                        <a href="redeem"><span class="icon Redeem"></span><span class="text">Redeem Prize</span></a>
+                        <a href="board"><span class="icon MvLive"></span><span class="text">Community Forum</span></a>
+                        <a href="ranking"><span class="icon"></span><span class="text">Weekly Ranking</span></a>
+                    </div>    
+                </div>
+                <div class="sb_bottom">
+                </div>
+            </div>
+        <div style="width:720px;height:292px;border: 7px solid #323c4c;position:relative;top:240px;left:210px;border-radius:5px;background-color:#11161d;text-align:center;">
+            <div style="text-align:center;float:left;">
+                <div style="position:absolute;top:0;left:0;text-align:center;width:724px;height:295px;z-index:0">
+                    <div style="height:40px;"></div>
+                    <div style="height:80px;"></div>
+                    <img src="img/front_bg_banner_hot.png" style="position:absolute;top:0;left:0;object-fit:none;height:292px;width:720px;" onload="document.getElementById('hotcontaineritem').style.display='inline-block';"/>
+                    <a href="levelup" title="Gold Hammer" style="display:none" id="hotcontaineritem"><div class="floatanimation hotcontainerelement">
+                        <img src="https://toyheroes.net/img/items/2cb018636598.png" style=" -webkit-filter: drop-shadow(5px 5px 5px #222);filter: drop-shadow(5px 5px 5px #222);">
+                        <div></div>
+                    </div></a>
+                    <!--<div style="background-color:#00000094;border-top-left-radius:5px;width:200px;height:20px;position:absolute;bottom:0;right:0">
+                        <div style="display:inline-block;width:10px;height:10px;background-color:#06eb06;border-radius:500px;position:relative;top:3px;margin-right:10px;"></div>
+                        <span style="font-size:12px;color:white;position:relative;top:2px;">All servers operational</span>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="footer_wrapper">
+    <div class="footer_container">
+        <div>
+            <img style="height: 79px;width:171px;position:relative;top:-22px;" src="img/esrb_logo.jpg">
+        </div>
+        <div>
+            <img style="width: 254px;height: 75px;position:relative;top:-22px;" src="img/pegi_logo.png">
+        </div>
+        <div class="eptmedia_logo">
+            <img src="img/footer_rh_logo.png" style="height:31px;width: 116px;margin-left:5px;"></div>
+        <div class="nq_logo">
+                <img src="img/footer_logo_nqgames.png" style="height:31px;width: 116px;margin-left:5px;"></div>
+        <div style="float: right;height: 30px;margin-right: 25px;width: 200px;margin-top:5px;">
+            <a href="tos" style="font-size:12px;text-decoration: underline;margin-right:15px;margin-left:15px;color: #D3D3D3;">Terms of Service</a>
+            <a href="tos" style="font-size:12px;text-decoration: underline;color: #D3D3D3;">Privacy Policy</a>
+        </div>
+        <div style="width: 1px; height: 1px; display: none">
+            <img style=" width:1px; height:1px; " src="https://toyheroes.net/" alt="">
+        </div>
+    </div>
+</div>
+<center><font size="2">This is a free demo result from the Wayback Machine Downloader. <a href="https://www.waybackmachinedownloader.com/en/">Click here</a> to download the full version.</font></center></body>
+</html>

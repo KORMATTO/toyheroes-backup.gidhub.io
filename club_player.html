@@ -1,0 +1,858 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>ToyHeroes - Online Toy Shooter</title>
+	<link rel="canonical" href="https://toyheroes.net/club_player" />
+        <meta name="keywords" content="toyheroes, toy, heroes, toys,free, fun, online, play, video, game, gamer, download, computer, pc, shooter, shooting, fps, tps, mmo, mmorpg, rpg, action, 3d, team, toy, war, battle, soldier, figure, stikfas, doll, story, multiplayer, single, player, clan, e-sports, global, world, gun, melee, shotgun, rifle, sniper, gatling, bazooka, grenade, death, match, deathmatch, competitive, competition, casual, core, social, smash, item, battery, shield, enamel, ammo, respawn, frag, headshot, customize, weapons, parts, chip, naomi, knox, pandora, have, reloaded, wakui, akira, brawl, buster, rock, hippo, trailer, update, register"/>
+        <meta name="description" content="Build your action figure and battle players around the world to become a ToyHeroes legend!"/>
+    <link href="css/toyheroes.css" rel="stylesheet" type="text/css">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+    <script src="js/toyheroes_quicklogin.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121881171-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-121881171-1');
+  function worldClock(zone, region) {
+    var dst = 0;
+    var time = new Date();
+    var gmtMS = time.getTime() + (time.getTimezoneOffset() * 60000);
+    var gmtTime = new Date(gmtMS);
+    var day = gmtTime.getDate();
+    var month = gmtTime.getMonth();
+    var year = gmtTime.getYear();
+    if (year < 1000) {
+        year += 1900;
+    }
+    var monthArray = new Array("January", "February", "March", "April", "May", "June", "July", "August",
+				"September", "October", "November", "December");
+    var monthDays = new Array("31", "28", "31", "30", "31", "30", "31", "31", "30", "31", "30", "31");
+    if (year % 4 == 0) {
+        monthDays = new Array("31", "29", "31", "30", "31", "30", "31", "31", "30", "31", "30", "31");
+    }
+    if (year % 100 == 0 && year % 400 != 0) {
+        monthDays = new Array("31", "28", "31", "30", "31", "30", "31", "31", "30", "31", "30", "31");
+    }
+    var hr = gmtTime.getHours() + zone;
+    var min = gmtTime.getMinutes();
+    var sec = gmtTime.getSeconds();
+    if (hr >= 24) {
+        hr = hr - 24;
+        day -= -1;
+    }
+    if (hr < 0) {
+        hr -= -24;
+        day -= 1;
+    }
+    if (hr < 10) {
+        hr = " " + hr;
+    }
+    if (min < 10) {
+        min = "0" + min;
+    }
+    if (sec < 10) {
+        sec = "0" + sec;
+    }
+    if (day <= 0) {
+        if (month == 0) {
+            month = 11;
+            year -= 1;
+        }
+        else {
+            month = month - 1;
+        }
+        day = monthDays[month];
+    }
+    if (day > monthDays[month]) {
+        day = 1;
+        if (month == 11) {
+            month = 0;
+            year -= -1;
+        }
+        else {
+            month -= -1;
+        }
+    }
+    if (region == "NAmerica") {
+        if (DST()) {
+            dst = 1;
+        }
+    }
+    if (dst == 1) {
+        hr -= -1;
+        if (hr >= 24) {
+            hr = hr - 24;
+            day -= -1;
+        }
+        if (hr < 10) {
+            hr = " " + hr;
+        }
+        if (day > monthDays[month]) {
+            day = 1;
+            if (month == 11) {
+                month = 0;
+                year -= -1;
+            }
+            else {
+                month -= -1;
+            }
+        }
+        var apm = " AM";
+        if (hr >= 12) {
+            if (hr > 12) {
+                hr = hr - 12;
+            }
+            apm = " PM";
+        }
+        return hr + ":" + min + ":" + sec + apm + " (EDT)";
+    }
+    else {
+        var apm = " AM";
+        if (hr >= 12) {
+            if (hr > 12) {
+                hr = hr - 12;
+            }
+            apm = " PM";
+        }
+        return hr + ":" + min + ":" + sec + apm + " (CET)";
+    }
+}
+function worldClockZone() {
+    var divClock = document.getElementById("clockText");
+    if (divClock) {
+        divClock.innerHTML = worldClock(2, "Europe");
+        setTimeout("worldClockZone()", 1000);
+    }
+}
+function open_signoff_dropdown() {
+        if (document.getElementById('signoff-dropdown').style.display == "block")
+            document.getElementById('signoff-dropdown').style.display = 'none';
+        else
+            document.getElementById('signoff-dropdown').style.display = "block";
+    }
+</script>
+<style>
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #272727;
+  border:1px solid #404040;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+  top:20px;
+  left:0px;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.arrow-down {
+    width: 0px;
+    height: 0px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #e8e8e8;
+    margin-left:5px;
+}
+.menulinktext:hover {
+    color:white!important;
+}
+.dottedline {
+    border:none;
+  border-bottom:1px dotted gray;
+  color:#fff;
+  height:1px;
+  width:100%;
+}
+.hoverscale:hover {
+    transform: scale(1.1);
+}
+</style>
+</style>
+</head>
+<body>
+    <div class="layout_wrapper">
+        <div class="home_header_wrapper">
+            <div class="header_top_nav">
+                <div class="nav_top_wrapper">
+                    <div class="nav_top_container">
+                        <div class="player_info">
+                            <div class="left side">
+                            </div>
+                            <div class="middle" id="mainLogin" style="position:relative;">
+                                                            <form id="mainLoginForm" action="" method="post">
+                                    <div class="ajaxLoadingMaskQuick" style="width: 100%; height: 100%; z-index: 1000; position: absolute; top: 0px; left: 0px; background-image: url(img/spacer.gif); background-repeat: repeat; display: none;">
+                                        <img alt="" class="ajaxLoading" style="margin-left: 197px; margin-top: 28px; position: absolute; height:18px; width:18px;" src="img/ajaxLoading2.gif">
+                                    </div>
+                                    <div style="position:relative; width:220px;">
+                                        <div class="login_info1">
+                                            <div class="icon_rh"></div>
+                                            <div style="margin-bottom: 2px;float: left; ">
+                                                <input onkeypress="if (event.keyCode == 13) onButtonQuickLoginClick();" name="userName" type="text" value="Login ID" onblur="if (this.value == '') {this.value = 'Login ID';}" onfocus="if (this.value == 'Login ID') {this.value = '';}" class="text_box" maxlength="16" style="color: rgb(204, 204, 204);"></div>
+                                            <div class="password" style="float: left; ">
+                                                <input id="fakepw" name="fakedPasswordInput" type="text" value="Password" onfocus="this.parentNode.style.display='none'; document.getElementById('realpw').parentNode.style.display='block'; document.getElementById('realpw').focus();" class="text_box" style="color: rgb(204, 204, 204);"></div>
+                                            <div class="password" style="display: none;float: left;">
+                                                <input onkeypress="if (event.keyCode == 13) onButtonQuickLoginClick();" id="realpw" name="password" type="password" value="" class="text_box" maxlength="32" style="color: rgb(204, 204, 204);" onblur="if (this.value == '') { this.parentNode.style.display = 'none'; document.getElementById('fakepw').parentNode.style.display='block'; }"></div>
+                                            <div id="wrong_password_board" class="wrong_password wrong_passwordid ErrorMsg" style="display: none;">
+                                                <div class="topleft"></div>
+                                                <div id="msgLogin" class="topmiddle">Invalid Login ID and/or Password.</div>
+                                                <div class="topright"></div>
+                                            </div>
+                                        </div>
+                                        <div class="login_info2">
+                                                <div class="row1">
+                                                        <a href="help" style="font-size:11px;margin-left:2px;" tabindex="1">Need help?</a>
+                                                    </div>
+                                            <div class="row1 " style=" width:85px;">
+                                                <a onclick="onButtonQuickLoginClick();" style="margin-right: 8px;" class="login2 formSubmitBtn" tabindex="0"><span class="left"></span>
+                                                    <span class="middle"><span style="position:relative;top:1px;">Login</span></span><span class="right"></span>
+                                                </a>
+                                            </div>
+                                            <div id="quickloginbuttonmask" style="position:absolute;top:21px;left:132px;width:60px;height:19px;background-color:rgb(0 0 0 / 41%);border-radius:0px;display:none"></div>
+                                        </div>
+                                    </div>
+                                </form>
+                                                            </div>
+                            <div class="right side">
+                            </div>
+                        </div>
+                        <div style="display:inline-block;float:right;position:relative;top:3px;margin-left:10px;cursor:not-allowed"><img src="img/language.png"/></div>
+                        <div style="display:inline-block;float:right;position:relative;top:7px;"><img src="img/clock1.png"/><span id="clockText" style="width: 105px;font-size: 11px;font-family: Arial, Helvetica, sans-serif;color:#999;position:relative;top:-6px;margin-left:5px;">123</span></div>
+                                            </div>
+                </div>
+            </div>
+            <div class="header_bottom">
+                <div class="home_header_middle">
+                    <a href="/">
+                        <div class="bb_logo">
+                        </div>
+                    </a>
+                </div>
+                <div class="nav">
+                    <div class="nav_container">
+                        <div class="ddsmoothmenu" id="smoothmenu1">
+                            <ul>
+                                <li>
+                                    <div class="nav_divider">
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="btn_nav_home_en">
+                                    <a href="/" class=""><span class="btn_nav_hide">Home</span></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="nav_divider">
+                                    </div>
+                                </li>
+                                <li style="margin-right:20px">
+                                    <div class="btn_nav_download_en">
+                                        <a href="download" class=""><span class="btn_nav_hide">Download</span></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="nav_divider">
+                                    </div>
+                                </li>
+                                <li style="margin-right:20px">
+                                    <div class="btn_nav_clubhouse_en">
+                                        <a href="club_player" class=""><span class="btn_nav_hide">Club House</span></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="nav_divider">
+                                    </div>
+                                </li>
+                                <li style="margin-right:20px">
+                                    <div class="btn_nav_guide_en">
+                                        <a href="guide" class=""><span class="btn_nav_hide">Guide</span></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="nav_divider">
+                                    </div>
+                                </li>
+                                <li style="margin-right:20px">
+                                    <div class="btn_nav_media_en">
+                                        <a href="media" class=""><span class="btn_nav_hide">Media</span></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="nav_divider">
+                                    </div>
+                                </li>
+                                <li style="margin-right:20px">
+                                    <div class="btn_nav_support_en">
+                                        <a href="support" class=""><span class="btn_nav_hide">Support</span></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="nav_divider">
+                                    </div>
+                                </li>
+                                <li style="margin-right:20px">
+                                    <div class="btn_nav_deposit_en">
+                                        <a href="purchase" class=""><span class="btn_nav_hide">Charge RT</span></a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>worldClockZone();</script>
+        <script>
+        function select_main_nav(name)
+        {
+            document.getElementsByClassName(name)[0].style.backgroundPosition = '0px bottom'
+        }
+        </script>
+        <div class="main_content_wrapper">
+<link href="css/toyheroes_register.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,400,700,900|Open+Sans:300,400,600,700,400italic,300italic">
+<script src="js/jquery-3.3.1.min.js"></script>
+<style>
+    .nav-container {
+        border-radius: 5px;
+        /*background-color: #1F2733;*/
+        background-color: #191919;
+        padding: 10px;
+        display:inline-block;
+        vertical-align: top;
+    }
+    .nav-seperator {
+        margin-left: 5px;
+        margin-right: 4px;
+        border-radius: 20px;
+        height: 805px;
+        width: 3px;
+        border: solid 1px #5d5d5d;
+        display: inline-block;
+        background-color: black;
+        position: relative;
+        top: 1px;
+    }
+    .tab-content-container-wrapper {
+        display:inline-block;
+        width: 692px;
+        vertical-align: top;
+    }
+    .tab-content-container-top {
+        background-image: url('img/social/content_page_main_content_bg_top.png');
+        background-position: center top;
+        background-repeat: no-repeat;
+        height: 13px;
+        width: 692px;
+    }
+    .tab-content-container-middle {
+        height: 770px;
+        background-image: url('img/social/content_page_main_content_bg.png');
+        background-position: left bottom;
+        background-repeat: repeat-y;
+        background-color: #ffffff;
+        padding: 2px 0px 10px 0px;
+        width: 692px;
+    }
+    .tab-content-container-bottom {
+        background-image: url('img/social/content_page_main_content_bg_bottom.png');
+        background-position: left bottom;
+        background-repeat: no-repeat;
+        height: 13px;
+        width: 692px;
+        margin-bottom: 10px;
+    }
+    .nav-button{
+        background: url("img/social/btn_sb_nav.png") no-repeat;
+        background-position: left top;
+        height: 29px;
+        width: 202px;
+        font-size: 12px;
+        font-weight: bold;
+        cursor: default;
+    }
+    .nav-button:hover {
+        cursor: pointer;
+        background-position: left bottom;
+    }
+    .nav-button-selected {
+        background-position: left bottom;
+    }
+    .nav-button-text {
+        color: #DAE8F6;
+        text-decoration: none;
+        float: left;
+        margin-left: 15px;
+        margin-top: 6px;
+        overflow: hidden;
+        height: 16px;
+        width: 136px;
+        cursor: pointer;
+        font-family: Arial,Helvetica,sans-serif;
+        position:relative;
+        top:1px;
+    }
+    .nav-button-icon-profile {
+        background-image: url('img/social/icon_sb_profile.png');
+        background-repeat: no-repeat;
+        height: 17px;
+        width: 20px;
+        float: left;
+        display: block;
+        margin-top: 5px;
+        margin-left: 10px;
+    }
+    .nav-button-icon-recruitments {
+        background-image: url('img/social/icon_sb_recruitments.png');
+        background-repeat: no-repeat;
+        height: 17px;
+        width: 20px;
+        float: left;
+        display: block;
+        margin-top: 5px;
+        margin-left: 10px;
+    }
+    .nav-button-icon-achievements {
+        background-image: url('img/social/icon_sb_achievements.png');
+        background-repeat: no-repeat;
+        height: 17px;
+        width: 20px;
+        float: left;
+        display: block;
+        margin-top: 5px;
+        margin-left: 10px;
+    }
+    .nav-button-icon-players {
+        background-image: url('img/social/icon_sb_players.png');
+        background-repeat: no-repeat;
+        height: 17px;
+        width: 20px;
+        float: left;
+        display: block;
+        margin-top: 5px;
+        margin-left: 10px;
+    }
+    .nav-button-icon-clans {
+        background-image: url('img/social/icon_sb_clan.png');
+        background-repeat: no-repeat;
+        height: 17px;
+        width: 20px;
+        float: left;
+        display: block;
+        margin-top: 5px;
+        margin-left: 10px;
+    }
+    .nav-button-icon-forum {
+        background-image: url('img/social/icon_sb_forum.png');
+        background-repeat: no-repeat;
+        height: 17px;
+        width: 20px;
+        float: left;
+        display: block;
+        margin-top: 5px;
+        margin-left: 10px;
+    }
+    .nav-button-icon-clan-creation {
+        background-image: url('img/social/icon_sb_clan_creation.png');
+        background-repeat: no-repeat;
+        height: 17px;
+        width: 20px;
+        float: left;
+        display: block;
+        margin-top: 5px;
+        margin-left: 10px;
+    }
+    .nav-button-icon-star {
+        background-image: url('img/social/icon_sb_star.png');
+        background-repeat: no-repeat;
+        height: 17px;
+        width: 20px;
+        float: left;
+        display: block;
+        margin-top: 5px;
+        margin-left: 10px;
+    }
+    .nav-button-icon-naomi {
+        background-image: url('img/social/icon_sb_naomi.png');
+        background-repeat: no-repeat;
+        height: 20px;
+        width: 20px;
+        float: left;
+        display: block;
+        margin-top: 5px;
+        margin-left: 10px;
+        position:relative;
+        top:-1px;
+    }
+    .nav-button-icon-marketplace {
+        background-image: url('img/social/icon_marketplace.png');
+        background-repeat: no-repeat;
+        height: 20px;
+        width: 20px;
+        float: left;
+        display: block;
+        margin-top: 5px;
+        margin-left: 10px;
+        position:relative;
+        top:-1px;
+    }
+</style>
+<script>
+    function load_tab(tab, url)
+    {
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200)
+            $(tab).html(this.responseText);
+    }
+    request.open('GET', url, true); // true; async
+    request.send();
+}
+function load_tab_post(tab, url, post_data)
+{
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200)
+            $(tab).html(this.responseText);
+    }
+    request.open('POST', url);
+    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    request.send(post_data);
+}
+    player = '';
+    clan = '';
+    news = '';
+    function select_tab(obj, id)
+    {
+        if (id == 5)
+        {
+            //window.open('https://toyheroes.net/board','_blank');
+            return;
+        }
+        var tab_elements = document.getElementsByClassName('nav-button');
+        for (var i = 0; i < tab_elements.length; i++) 
+            tab_elements[i].classList.remove("nav-button-selected");
+        obj.classList.add("nav-button-selected");
+        show_loading($(".tab-content-container-middle"));
+        default_player = 'Naomi';
+        default_clan = 'ToyHeroes';
+        if (player == '')
+            player = default_player;
+        if (clan == '')
+            clan = default_clan;
+        if (id == 1)
+            load_tab($(".tab-content-container-middle"), "/tabs/tab_social_profile");
+        else if (id == 2)
+            load_tab($(".tab-content-container-middle"), "/tabs/tab_social_myclan");
+        else if (id == 3)
+            load_tab($(".tab-content-container-middle"), "/tabs/tab_social_players?page=1&player=" + player);
+        else if (id == 4)
+            load_tab($(".tab-content-container-middle"), "/tabs/tab_social_clans?page=1&clan=" + clan);
+        else if (id == 6)
+            load_tab($(".tab-content-container-middle"), "/tabs/tab_social_clan_creation");
+        else if (id == 7)
+            load_tab($(".tab-content-container-middle"), "/tabs/tab_social_recruitments");
+        else if (id == 8)
+            load_tab($(".tab-content-container-middle"), "/tabs/tab_social_achievements");
+        else if (id == 9)
+            load_tab($(".tab-content-container-middle"), "/tabs/tab_social_news?news=" + news);
+        else if (id == 10)
+            load_tab($(".tab-content-container-middle"), "/tabs/tab_social_trade");
+        else if (id == 11)
+            load_tab($(".tab-content-container-middle"), "/tabs/tab_social_marketplace");
+        player = '';
+        clan = '';
+    }
+    function show_loading(content_container)
+    {
+        $(content_container).html('<img alt="" class="ajaxLoading" style="margin-left: 99px; position:relative; top: 320px; left:200px;width: 20px; height: 20px;" src="img/ajaxLoading2.gif"><a style="color:black;font-size:12px;position:relative;top:314px;left:205px;">Loading</a>');
+    }
+</script>
+<div class="bottom_wrapper" style="padding-top:10px;padding-left:5px;background-color: #202529;background-image: url(img/content_page_bg1.jpg);background-repeat: repeat-x;">
+<div class="nav-container" style="max-width:200px;padding-top:0px;">
+    <div class="wrapper_side_nav" style="position:relative;left:-10px;top:-0px;">
+        <div class="top"></div>
+        <div class="middle">
+            <div style="position:relative;left:3px;">
+            <div id="cbb-nav-1" class="nav-button" onclick="select_tab(this, 1);" style="display:none">
+                <span class="nav-button-icon-profile"></span>
+                <span class="nav-button-text">My Profile</span>
+            </div>
+                        <div id="cbb-nav-7" class="nav-button" onclick="select_tab(this, 7);" style="margin-top:3px;display:block;display:none">
+                <span class="nav-button-icon-recruitments"></span>
+                <span class="nav-button-text">Recruitments</span>
+            </div>
+            <div id="cbb-nav-8" class="nav-button" onclick="select_tab(this, 8);" style="margin-top:3px;display:block;display:none">
+                <span class="nav-button-icon-achievements"></span>
+                <span class="nav-button-text">Achievements</span>
+            </div>
+            <div id="cbb-nav-10" class="nav-button" onclick="select_tab(this, 10);" style="margin-top:3px;display:block;display:none">
+                <span class="nav-button-icon-naomi"></span>
+                <span class="nav-button-text">Trade Inventory</span>
+            </div>
+                <div style="margin-top:-10px;"></div>
+        <!--<div style="height:50px;width:200px;padding-top:10px;background-image: linear-gradient(to right, #63636363 , #00000040);margin-top:0px;margin-left:-10px;"><div style="display:inline-block;width:25px;"><img src="/img/icon_info.png" style="width:20;height:20;"/></div><div style="display:inline-block;width:150px;"><span style="color:white;font-size:14px;position:relative;top:3px;left:10px;">Please log in to access your profile!</span></div></div>-->
+                    <div id="cbb-nav-3" class="nav-button" style="margin-top:10px;" onclick="select_tab(this, 3);">
+                <span class="nav-button-icon-players"></span>
+                <span class="nav-button-text">Players</span>
+                </div>
+            <div id="cbb-nav-4" class="nav-button" style="margin-top:3px;" onclick="select_tab(this, 4);">
+                <span class="nav-button-icon-clans"></span>
+                <span class="nav-button-text">Clans</span>
+            </div>
+            <div id="cbb-nav-5" class="nav-button" style="margin-top:3px;" onclick="select_tab(this, 5);">
+                <span class="nav-button-icon-forum"></span>
+                <span class="nav-button-text">Forum</span>
+            </div>
+            <div id="cbb-nav-9" class="nav-button" style="margin-top:3px;" onclick="select_tab(this, 9);">
+                <span class="nav-button-icon-star"></span>
+                <span class="nav-button-text">News</span>
+            </div>
+                        <div id="cbb-nav-11" class="nav-button" style="margin-top:10px;" onclick="select_tab(this, 11);">
+                <span class="nav-button-icon-marketplace"></span>
+                <span class="nav-button-text">Marketplace</span>
+            </div>
+            </div>
+        </div>
+        <div class="bottom"></div>
+    </div>
+<style>
+.sb_top {
+    background-image: url(img/side_bar_bg.png);
+    background-repeat: no-repeat;
+    background-position: left top;
+    height: 9px;
+    width: 220px;
+    float: left;
+}
+.sb_middle {
+    background-image: url(img/side_bar_bg.png);
+    background-repeat: repeat-y;
+    background-position: right top;
+    width: 190px;
+    float: left;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.sb_bottom {
+    background-image: url(img/side_bar_bg.png);
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    height: 9px;
+    width: 220px;
+    float: left;
+}
+.cont1 {
+    float: right;
+    width: 220px;
+}
+.sb_update {
+    display: table;
+}
+.sb_update a:first-child {
+    background-image: url(img/btn_sb_update_en.png);
+    background-position: left top;
+    background-repeat: no-repeat;
+    float: left;
+    height: 47px;
+    width: 190px;
+}
+.sb_update a {
+    background-image: url(img/btn_sb_default.png);
+    background-position: left top;
+    background-repeat: no-repeat;
+    float: left;
+    height: 37px;
+    width: 190px;
+    margin-bottom: 3px;
+    display: block;
+    clear: both;
+    position: relative;
+}
+.sb_update a:hover {
+    background-position: left bottom;
+}
+.sb_update .icon {
+    background-position: left top;
+    background-repeat: no-repeat;
+    float: left;
+    height: 30px;
+    width: 30px;
+    position: relative;
+    margin: 4px 7px 0px 4px;
+    top:-1px;
+}
+.sb_update .icon.Redeem {
+    background-image: url(img/btn_sb_icon_redeem.png);
+}
+.sb_update .icon.MvLive {
+    background-image: url(img/btn_sb_icon_mv_live.png);
+}
+.sb_update .icon.Lollipop {
+    background-image: url(img/btn_sb_icon_free_lollipop.png);
+}
+.sb_update .date {
+    top: 27px;
+    left: 45px;
+    color: #300000;
+    font-size: 11px;
+    font-weight: bold;
+    width: 135px;
+    position: absolute;
+}
+.sb_update .text {
+    color: #0D202F;
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    display: table;
+    float: left;
+    margin-top: 10px;
+}
+.container_register {
+    background-image: url(img/btn_sb_register.png);
+    background-repeat: repeat;
+    float: left;
+    height: 70px;
+    margin-bottom: 4px;
+    width: 220px;
+    margin: 5px 1px;
+}
+.btn_register_home {
+    background-image: url(img/home_btn_register_en.png);
+    background-repeat: no-repeat;
+    background-position: left top;
+    float: left;
+    height: 55px;
+    width: 172px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 7px;
+}
+.btn_download_home {
+    background-image: url(img/home_btn_download_en.png);
+    background-repeat: no-repeat;
+    background-position: left top;
+    float: left;
+    height: 55px;
+    width: 172px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 7px;
+}
+.wrapper_side_nav {
+    width: 220px;
+}
+.wrapper_side_nav .top {
+    background-image: url(img/side_bar_nav_bg.png);
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    height: 9px;
+    width: 220px;
+    float: left;
+}
+.wrapper_side_nav .middle {
+    background-image: url(img/side_bar_nav_bg.png);
+    background-repeat: repeat-y;
+    background-position: top right;
+    width: 208px;
+    float: left;
+    padding-right: 6px;
+    padding-left: 6px;
+}
+.wrapper_side_nav .bottom {
+    background-image: url(img/side_bar_nav_bg.png);
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    height: 9px;
+    width: 220px;
+    float: left;
+}
+.btn_register_home:hover {
+    background-position: 0px bottom;
+}
+.btn_download_home:hover {
+    background-position: 0px bottom;
+}
+</style>
+<div class="container_register" style="margin-top:5px;position:relative;left:-10px;">
+                                        <a href="register">
+                        <div class="btn_register_home en" style="margin-left:23px;margin-top:7px;">
+                        </div>
+                    </a>
+                                    </div>
+<div class="cont1" style="position:relative;left:12px;margin-top:0px;">
+                <div class="sb_top">
+                </div>
+                <div class="sb_middle">
+                    <div class="sb_update en">
+                        <a href="club_news-46447"><span class="icon"></span><span class="date">September 8th, 2023</span></a>
+                        <a href="login"><span class="icon Lollipop"></span><span class="text">Affiliate Program</span></a>
+                        <a href="https://www.waybackmachinedownloader.com/en/"><span class="icon Redeem"></span><span class="text">Redeem Prize</span></a>
+                        <a href="board"><span class="icon MvLive"></span><span class="text">Community Forum</span></a>
+                        <a href="ranking"><span class="icon"></span><span class="text">Weekly Ranking</span></a>
+                    </div>    
+                </div>
+                <div class="sb_bottom">
+                </div>
+            </div>
+</div>
+<div class="nav-seperator">
+</div>
+<div class="tab-content-container-wrapper">
+    <div class="tab-content-container-top">
+    </div>
+    <div class="tab-content-container-middle">
+    </div>
+    <div class="tab-content-container-bottom">
+    </div>
+</div>
+<script>
+    select_main_nav('btn_nav_clubhouse_en');
+    function select_achievements_tab()
+    {
+        select_tab($("#cbb-nav-8")[0], 8);
+    }
+            select_tab($("#cbb-nav-3")[0], 3)
+    </script>
+</div>
+<div class="footer_wrapper">
+    <div class="footer_container">
+        <div>
+            <img style="height: 79px;width:171px;position:relative;top:-22px;" src="img/esrb_logo.jpg">
+        </div>
+        <div>
+            <img style="width: 254px;height: 75px;position:relative;top:-22px;" src="img/pegi_logo.png">
+        </div>
+        <div class="eptmedia_logo">
+            <img src="img/footer_rh_logo.png" style="height:31px;width: 116px;margin-left:5px;"></div>
+        <div class="nq_logo">
+                <img src="img/footer_logo_nqgames.png" style="height:31px;width: 116px;margin-left:5px;"></div>
+        <div style="float: right;height: 30px;margin-right: 25px;width: 200px;margin-top:5px;">
+            <a href="tos" style="font-size:12px;text-decoration: underline;margin-right:15px;margin-left:15px;color: #D3D3D3;">Terms of Service</a>
+            <a href="tos" style="font-size:12px;text-decoration: underline;color: #D3D3D3;">Privacy Policy</a>
+        </div>
+        <div style="width: 1px; height: 1px; display: none">
+            <img style=" width:1px; height:1px; " src="https://toyheroes.net/club?player=" alt="">
+        </div>
+    </div>
+</div>
+</body>
+</html>

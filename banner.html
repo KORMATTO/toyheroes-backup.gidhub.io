@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>jQuery slideshow</title>
+	<link rel="canonical" href="https://toyheroes.net/banner" />
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <style type="text/css">
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+        /* CSS Document */
+        /* // image replacement */
+        #HOME_BANNER_container {
+            text-align: left;
+            width: 740px;
+            margin-bottom: 0px;
+            height: 252px;
+            margin-top: 0;
+            margin-right: 0px;
+            margin-left: 0px;
+            background-repeat: no-repeat;
+            background-color: transparent;
+            overflow: hidden;
+            float: left;
+            position: relative;
+            padding: 0px;
+            top: 0px;
+        }
+        #HOME_BANNER_container .left_container {
+            background-image: url(img/home_banner_bg_left.png);
+            background-repeat: no-repeat;
+            background-position: 0px 0px;
+            float: left;
+            height: 252px;
+            width: 7px;
+        }
+        #HOME_BANNER_container .middle_container {
+            float: left;
+            width: 726px;
+            height: 250px;
+        }
+        #HOME_BANNER_container .right_container {
+            background-image: url(img/home_banner_bg_right.png);
+            background-repeat: no-repeat;
+            background-position: 0px 0px;
+            float: right;
+            height: 252px;
+            width: 6px;
+        }
+        #HOME_BANNER_container .middle_container .top {
+            background-image: url(img/home_banner_bg_top.png);
+            background-repeat: repeat-x;
+            background-position: 0px 0px;
+            height: 6px;
+            width: 728px;
+            float: left;
+        }
+        #HOME_BANNER_container .middle_container .image_container {
+            float: left;
+            height: 238px;
+            width: 726px;
+            border: 1px solid #000;
+        }
+        #HOME_BANNER_container .middle_container .bottom {
+            background-image: url(img/home_banner_bg_bottom.png);
+            background-repeat: repeat-x;
+            background-position: 0px 0px;
+            height: 6px;
+            width: 728px;
+            float: left;
+        }
+        .buttons_bg {
+            background-image: url(img/home_banner_buttons_bg1.png);
+            background-repeat: no-repeat;
+            background-position: 0px 0px;
+            position: absolute;
+            top: 227px;
+            z-index: 1000;
+            height: 21px;
+            width: 212px;
+            background-color: transparent;
+            left: 523px;
+        }
+        #container {
+            margin: 0px;
+            padding: 0px;
+            width: 726px;
+            height: 238px;
+            background-image: url(https://toyheroes.net/img/cotent_page_banner_bg1.png);
+            background-repeat: no-repeat;
+        }
+        .slideshow {
+            width: 726px;
+            height: 238px;
+            list-style: none;
+            position: relative;
+            margin: 0px;
+            padding: 0px;
+        }
+        ul.slideshow li {
+            position: absolute;
+            display: inline;
+        }
+        ul.slideshow li.show {
+            z-index: 500;
+        }
+        .control {
+            position: absolute;
+            left: 524px;
+            width: 212px;
+            top: 224px;
+            margin: 0px;
+            z-index: 1000;
+            /*background-image: url(img/home_banner_buttons_bg1.png);*/
+            background-image:url(img/home_banner_btns_bg.png);
+            background-repeat: no-repeat;
+            height: 25px;
+        }
+        .control li {
+            list-style: none;
+            float: left;
+            /*margin: 2px 0px;*/
+            margin: -1px 0px;
+        }
+        .control li a {
+            color: transparent;
+            height: 15px;
+            width: 15px;
+            float: left;
+            /*background-image: url(img/btn_ban_home.png);*/
+            background-image:url(img/home_banner_btn.png);
+            background-repeat: no-repeat;
+            background-position: left bottom;
+            margin-right: 7px;
+            margin-top: 7px;
+        }
+        .control li a:hover,
+        .control li.current a {
+            background-position: top;
+        }
+    </style>
+</head>
+<body>
+    <div id="HOME_BANNER_container">
+        <div class="left_container"></div>
+        <div class="middle_container">
+            <div class="top"></div>
+            <div class="image_container" id="slider">
+                <ul>
+                        <li><a href="club_news-46447" target="_parent"><img alt="" src="img/banner/banner177.png" width="726" height="238"></a></li>
+                        <li><a href="club_news-46445" target="_parent"><img alt="" src="img/banner/banner176.png" width="726" height="238"></a></li>
+                        <li><a href="club_news-46439" target="_parent"><img alt="" src="img/banner/banner170june.png" width="726" height="238"></a></li>
+                        <li><a href="club_news-46438" target="_parent"><img alt="" src="img/banner/banner169.png" width="726" height="238"></a></li>
+                        <li><a href="club_news-46434" target="_parent"><img alt="" src="img/banner/banner164.png" width="726" height="238"></a></li>
+                        <li><a href="club_news-46428" target="_parent"><img alt="" src="img/banner/banner159.png" width="726" height="238"></a></li>
+                        <li><a href="club_news-46426" target="_parent"><img alt="" src="img/banner/banner157.png" width="726" height="238"></a></li>
+                        <!--<li><a href="https://toyheroes.net/club?news=46422" target="_parent"><img alt="" src="/img/banner/banner153.png" width="726" height="238"></a></li>-->
+                        <!--<li><a href="https://toyheroes.net/club?news=46419" target="_parent"><img alt="" src="/img/banner/banner151.png" width="726" height="238"></a></li>-->
+                        <!--<li><a href="https://toyheroes.net/club?news=46410" target="_parent"><img alt="" src="/img/banner/banner144.png" width="726" height="238"></a></li>-->
+                        <!--<li><a href="https://toyheroes.net/club?news=46405" target="_parent"><img alt="" src="/img/banner/banner140.png" width="726" height="238"></a></li>-->
+                        <!--<li><a href="https://toyheroes.net/club?news=46400" target="_parent"><img alt="" src="/img/banner/banner136.png" width="726" height="238"></a></li>-->
+                        <!--<li><a href="https://toyheroes.net/club?news=46395" target="_parent"><img alt="" src="/img/banner/banner131.png" width="726" height="238"></a></li>-->
+                        <!--<li><a href="https://toyheroes.net/club?news=46392" target="_parent"><img alt="" src="/img/banner/banner126.png" width="726" height="238"></a></li>-->
+                        <!--<li><a href="https://toyheroes.net/club?news=46388" target="_parent"><img alt="" src="/img/banner/banner124.png" width="726" height="238"></a></li>-->
+                        <!--<li><a href="https://toyheroes.net/club?news=46386" target="_parent"><img alt="" src="/img/banner/banner115.png" width="726" height="238"></a></li>-->
+                        <!--<li><a href="https://toyheroes.net/club?news=46381" target="_parent"><img alt="" src="/img/banner/banner103.png" width="726" height="238"></a></li>-->
+                        <!--<li><a href="https://toyheroes.net/club?news=46375" target="_parent"><img alt="" src="/img/banner/banner97.png" width="726" height="238"></a></li>-->
+                        <!--<li><a href="https://toyheroes.net/club?news=46371" target="_parent"><img alt="" src="/img/banner/banner92.png" width="726" height="238"></a></li>-->
+                        <!--<li><a href="https://toyheroes.net/club?news=46366" target="_parent"><img alt="" src="/img/banner/banner86.png" width="726" height="238"></a></li>-->
+                        <!--<li><a href="https://toyheroes.net/club?news=46362" target="_parent"><img alt="" src="/img/banner/banner80.png" width="726" height="238"></a></li>-->
+                        <!--<li><a href="https://toyheroes.net/announcement?id=46359" target="_parent"><img alt="" src="/img/banner/banner76.png" width="726" height="238"></a></li>-->
+                        <!--<li><a href="https://toyheroes.net/announcement?id=46357" target="_parent"><img alt="" src="/img/banner/banner74.png" width="726" height="238"></a></li>-->
+                        <!--<li><a href="https://toyheroes.net/announcement?id=46355" target="_parent"><img alt="" src="/img/banner/banner72.png" width="726" height="238"></a></li>
+                        <!--<li><a href="https://toyheroes.net/announcement?id=46353" target="_parent"><img alt="" src="/img/banner/banner69.png" width="726" height="238"></a></li>-->
+                        <!--<li><a href="https://toyheroes.net/announcement?id=46351" target="_parent"><img alt="" src="/img/banner/banner61.png" width="726" height="238"></a></li>-->
+                        <!--<li><a href="https://toyheroes.net/announcement?id=46347" target="_parent"><img alt="" src="/img/banner/banner57.png" width="726" height="238"></a></li>-->
+                        <!--<li><a href="https://toyheroes.net/announcement?id=46346" target="_parent"><img alt="" src="/img/banner/banner55.png" width="726" height="238"></a></li>-->
+                        <!--<li><a href="https://toyheroes.net/announcement?id=46344" target="_parent"><img alt="" src="/img/banner/banner53.png" width="726" height="238"></a></li>-->
+                        <!--<li><a href="https://toyheroes.net/announcement?id=46340" target="_parent"><img alt="" src="/img/banner/banner49.png" width="726" height="238"></a></li>
+                        <!--<li><a href="https://toyheroes.net/announcement?id=46337" target="_parent"><img alt="" src="/img/banner/banner46.png" width="726" height="238"></a></li>-->
+                        <!--<li><a href="https://toyheroes.net/announcement?id=46333" target="_parent"><img alt="" src="/img/banner/banner42.png" width="726" height="238"></a></li>
+                        <!--<li><a href="https://toyheroes.net/announcement?id=46332" target="_parent"><img alt="" src="/img/banner/banner35.jpg" width="726" height="238"></a></li>-->
+                        <!--<li><a href="https://toyheroes.net/announcement?id=46331" target="_parent"><img alt="" src="/img/banner/banner41.png" width="726" height="238"></a></li>
+                        <!--<li><a href="https://toyheroes.net/announcement?id=46325" target="_parent"><img alt="" src="/img/banner/banner30.png" width="726" height="238"></a></li>-->
+                        <!--<li><a href="https://toyheroes.net/announcement?id=46323" target="_parent"><img alt="" src="/img/banner/banner29.png" width="726" height="238"></a></li>-->
+                        <!--<li><a href="https://toyheroes.net/announcement?id=46301" target="_parent"><img alt="" src="/img/banner/banner13.png" width="726" height="238"></a></li>-->
+                        <!--<li><a href="https://toyheroes.net/announcement?id=46306" target="_parent"><img alt="" src="/img/banner/banner12.png" width="726" height="238"></a></li>-->
+                        <!--<li><a href="https://toyheroes.net/announcement?id=46310" target="_parent"><img alt="" src="/img/banner/banner11.png" width="726" height="238"></a></li>-->
+                        <!--<li><a href="https://toyheroes.net/forum/index.php?threads/patch-notes-10-08-2019.7801/" target="_parent"><img alt="" src="/img/banner/banner10.png" width="726" height="238"></a></li>
+                        <li><a href="https://toyheroes.net/forum/index.php?threads/patch-notes-09-18-2019.7756/" target="_parent"><img alt="" src="/img/banner/banner9.png" width="726" height="238"></a></li>
+                        <li><a href="https://toyheroes.net/forum/index.php?threads/official-monthly-hide-and-seek-event.7682/" target="_parent"><img alt="" src="/img/banner/banner8.png" width="726" height="238"></a></li>
+                        <li><a href="https://www.toyheroes.net/forum/index.php?threads/event-fan-art-season-1.7661/" target="_parent"><img alt="" src="/img/banner/banner7.png" width="726" height="238"></a></li>
+                        <li><a href="https://www.toyheroes.net/forum/index.php?threads/patch-notes-08-02-2019.7631/" target="_parent"><img alt="" src="/img/banner/banner6.png" width="726" height="238"></a></li>
+                        <li><a href="https://www.toyheroes.net/forum/index.php?threads/recruitment-system-exclusive-dioramas.7475/" target="_parent"><img alt="" src="/img/banner/banner5.png" width="726" height="238"></a></li>
+                        <li><a href="https://www.toyheroes.net/forum/index.php?threads/maintenance-changelog-14-06-2019.7396/" target="_parent"><img alt="" src="/img/banner/banner4.png" width="726" height="238"></a></li>
+                        <li><a href="https://www.toyheroes.net/forum/index.php?threads/patch-notes-04-23-2019.7020/" target="_parent"><img alt="" src="/img/banner/banner3.png" width="726" height="238"></a></li>
+                        <li><a href="https://www.toyheroes.net/forum/index.php?threads/official-balks-training-camp.6900/" target="_parent"><img alt="" src="/img/banner/banner1.png" width="726" height="238"></a></li>
+                        <li><a href="https://www.toyheroes.net/forum/index.php?threads/official-monthly-event-%E2%80%93-beat-the-boss-1.6636/" target="_parent"><img alt="" src="/img/banner/banner2.png" width="726" height="238"></a></li>
+                        <li><a href="https://www.toyheroes.net/forum/index.php?threads/patch-notes-01-15-2019.6397/" target="_parent"><img alt="" src="https://i.imgur.com/gwSa4Je.png" width="726" height="238"></a></li>
+                        <li><a href="https://www.toyheroes.net/forum/index.php?threads/patch-notes-12-24-2018.5976/" target="_parent"><img alt="" src="https://i.imgur.com/UnzLFaU.png" width="726" height="238"></a></li>
+                        <li><a href="https://www.toyheroes.net/forum/index.php?threads/patch-notes-12-24-2018.5976/" target="_parent"><img alt="" src="https://i.imgur.com/b6YoHSw.png" width="726" height="238"></a></li>
+                        <li><a href="https://www.toyheroes.net/forum/index.php?threads/patch-notes-10-30-2018.5460/" target="_parent"><img alt="" src="https://i.imgur.com/8d456QW.png" width="726" height="238"></a></li>
+                        <li><a href="https://www.toyheroes.net/forum/index.php?threads/patch-notes-10-03-2018.5288/" target="_parent"><img alt="" src="https://i.imgur.com/oK912T9.png" width="726" height="238"></a></li>
+                        <li><a href="https://www.toyheroes.net/forum/index.php?threads/patch-notes-09-04-2018.5013/" target="_parent"><img alt="" src="https://i.imgur.com/TWXtuLs.png" width="726" height="238"></a></li>
+                        <li><a href="https://www.toyheroes.net/forum/index.php?threads/patch-notes-08-21-2018.4878/" target="_parent"><img alt="" src="https://images-ext-2.discordapp.net/external/s65K0xWSrMqzjTLGP4HtmgC4qt4jA24ndZCvLmFzbAg/https/i.imgur.com/mEwmfBI.png" width="726" height="238"></a></li>
+                        <li><a href="https://www.toyheroes.net/forum/index.php?threads/official-go-for-the-goal.4094/" target="_parent"><img alt="" src="https://media.discordapp.net/attachments/332559220530741288/457225348636213250/worl_cup_03.png?width=978&height=324" width="726" height="238"></a></li>        
+                    <li><a href="https://www.toyheroes.net/forum/index.php?threads/patch-notes-23-12-2017.1251/" target="_parent"><img alt="" src="img/banner2.jpg" width="726" height="238"></a></li>-->
+                    <!--<li><a href="/news/945" target="_parent"><img alt="" src="/uploads/9/images/banner/bb_caption_home_en.jpg" width="726" height="238"></a></li>-->
+                    <!--<li><a href="https://www.toyheroes.net/forum/index.php?threads/patch-notes-23-12-2017.1251/" target="_parent"><img alt="" src="img/banner2.jpg" width="726" height="238"></a></li>-->
+                </ul>
+            </div>
+            <div class="bottom"></div>
+        </div>
+        <div class="right_container"></div>
+    </div>
+    <ul class="control">
+    </ul>
+    <script type="text/javascript">
+        var fadeDuration = 1200;
+        var slideDuration = 5000;
+        var currentIndex = 1;
+        var nextIndex = 1;
+        var interval = null;
+        $(document).ready(function () {
+            var length = $('ul.slideshow li').length;
+            $('.control').html('');
+            for (var i = 1; i <= length; i++) {
+                $('.control').append('<li><a href="javascript:show(' + i + ');"></a>');
+            }
+            $("'ul.control li:nth-child(" + nextIndex + ")'").addClass('current');
+            $('ul.slideshow li').css({ opacity: 0.0 });
+            $("'ul.slideshow li:nth-child(" + nextIndex + ")'").addClass('show').animate({ opacity: 1.0 }, fadeDuration);
+            interval = setInterval('nextSlide();', slideDuration);
+        });
+        function nextSlide() {
+            //         if (interval != null) {
+            //             clearInterval(interval);
+            //             interval = null;
+            //         }
+            nextIndex = currentIndex + 1;
+            if (nextIndex > $('ul.slideshow li').length) {
+                nextIndex = 1;
+            }
+            $('ul.control li').removeClass('current');
+            $("'ul.control li:nth-child(" + nextIndex + ")'").addClass('current');
+            $("'ul.slideshow li:nth-child(" + nextIndex + ")'").stop("true", "true").addClass('show').animate({ opacity: 1.0 }, fadeDuration);
+            $("'ul.slideshow li:nth-child(" + currentIndex + ")'").stop("true", "true").animate({ opacity: 0.0 }, fadeDuration).removeClass('show');
+            currentIndex = nextIndex;
+            //  interval = setInterval('nextSlide();', slideDuration);
+        }
+        function show(id) {
+            if (interval != null) {
+                clearInterval(interval);
+                interval = null;
+            }
+            nextIndex = id;
+            $('ul.control li').removeClass('current');
+            $("'ul.control li:nth-child(" + nextIndex + ")'").addClass('current');
+            $('ul.slideshow li').stop("true", "true").css({ opacity: 0.0 });
+            $("'ul.slideshow li:nth-child(" + nextIndex + ")'").stop("true", "true").addClass('show').animate({ opacity: 1.0 }, fadeDuration);
+            $("'ul.slideshow li:nth-child(" + currentIndex + ")'").removeClass('show');
+            //  interval = setInterval('nextSlide();', slideDuration);
+            currentIndex = nextIndex;
+        }
+        $('.image_container ul').addClass("slideshow");
+    </script>
+</body>
+</html>

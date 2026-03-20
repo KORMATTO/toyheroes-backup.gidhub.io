@@ -1,0 +1,110 @@
+# invoke rewrite engine
+RewriteEngine On
+RewriteBase /scraping/files/demo/toyheroes.net_assr.reining33_gmail.com_0cf8rhkece/
+
+Options -Indexes
+<IfModule mod_negotiation.c>
+	Options -MultiViews
+</IfModule>
+
+# Prevent scraping from archive for free demo
+RewriteCond %{HTTP_USER_AGENT} (ia_archiver) [NC]
+RewriteRule . - [F,L]
+
+# Specific redirections
+RewriteRule ^index\.html$ /scraping/files/demo/toyheroes.net_assr.reining33_gmail.com_0cf8rhkece/ [L,R=301]
+RewriteCond %{QUERY_STRING} ^player=$
+RewriteRule ^club$ /scraping/files/demo/toyheroes.net_assr.reining33_gmail.com_0cf8rhkece/club_player [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^id=0$
+RewriteRule ^announcement$ /scraping/files/demo/toyheroes.net_assr.reining33_gmail.com_0cf8rhkece/announcement_id-0 [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^news=46447$
+RewriteRule ^club$ /scraping/files/demo/toyheroes.net_assr.reining33_gmail.com_0cf8rhkece/club_news-46447 [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^news=46446$
+RewriteRule ^club$ /scraping/files/demo/toyheroes.net_assr.reining33_gmail.com_0cf8rhkece/club_news-46446 [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^news=46445$
+RewriteRule ^club$ /scraping/files/demo/toyheroes.net_assr.reining33_gmail.com_0cf8rhkece/club_news-46445 [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^news=46444$
+RewriteRule ^club$ /scraping/files/demo/toyheroes.net_assr.reining33_gmail.com_0cf8rhkece/club_news-46444 [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^news=46443$
+RewriteRule ^club$ /scraping/files/demo/toyheroes.net_assr.reining33_gmail.com_0cf8rhkece/club_news-46443 [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^news=46442$
+RewriteRule ^club$ /scraping/files/demo/toyheroes.net_assr.reining33_gmail.com_0cf8rhkece/club_news-46442 [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^news=46441$
+RewriteRule ^club$ /scraping/files/demo/toyheroes.net_assr.reining33_gmail.com_0cf8rhkece/club_news-46441 [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^news=46432$
+RewriteRule ^club$ /scraping/files/demo/toyheroes.net_assr.reining33_gmail.com_0cf8rhkece/club_news-46432 [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^news=46429$
+RewriteRule ^club$ /scraping/files/demo/toyheroes.net_assr.reining33_gmail.com_0cf8rhkece/club_news-46429 [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^news=46427$
+RewriteRule ^club$ /scraping/files/demo/toyheroes.net_assr.reining33_gmail.com_0cf8rhkece/club_news-46427 [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^news=46416$
+RewriteRule ^club$ /scraping/files/demo/toyheroes.net_assr.reining33_gmail.com_0cf8rhkece/club_news-46416 [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^news=46440$
+RewriteRule ^club$ /scraping/files/demo/toyheroes.net_assr.reining33_gmail.com_0cf8rhkece/club_news-46440 [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^news=46438$
+RewriteRule ^club$ /scraping/files/demo/toyheroes.net_assr.reining33_gmail.com_0cf8rhkece/club_news-46438 [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^news=46435$
+RewriteRule ^club$ /scraping/files/demo/toyheroes.net_assr.reining33_gmail.com_0cf8rhkece/club_news-46435 [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^news=46433$
+RewriteRule ^club$ /scraping/files/demo/toyheroes.net_assr.reining33_gmail.com_0cf8rhkece/club_news-46433 [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^news=46430$
+RewriteRule ^club$ /scraping/files/demo/toyheroes.net_assr.reining33_gmail.com_0cf8rhkece/club_news-46430 [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^news=46426$
+RewriteRule ^club$ /scraping/files/demo/toyheroes.net_assr.reining33_gmail.com_0cf8rhkece/club_news-46426 [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^news=46425$
+RewriteRule ^club$ /scraping/files/demo/toyheroes.net_assr.reining33_gmail.com_0cf8rhkece/club_news-46425 [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^news=46401$
+RewriteRule ^club$ /scraping/files/demo/toyheroes.net_assr.reining33_gmail.com_0cf8rhkece/club_news-46401 [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^news=46367$
+RewriteRule ^club$ /scraping/files/demo/toyheroes.net_assr.reining33_gmail.com_0cf8rhkece/club_news-46367 [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^id=46360$
+RewriteRule ^announcement$ /scraping/files/demo/toyheroes.net_assr.reining33_gmail.com_0cf8rhkece/announcement_id-46360 [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^id=46320$
+RewriteRule ^announcement$ /scraping/files/demo/toyheroes.net_assr.reining33_gmail.com_0cf8rhkece/announcement_id-46320 [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^id=46304$
+RewriteRule ^announcement$ /scraping/files/demo/toyheroes.net_assr.reining33_gmail.com_0cf8rhkece/announcement_id-46304 [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^news=46439$
+RewriteRule ^club$ /scraping/files/demo/toyheroes.net_assr.reining33_gmail.com_0cf8rhkece/club_news-46439 [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^news=46437$
+RewriteRule ^club$ /scraping/files/demo/toyheroes.net_assr.reining33_gmail.com_0cf8rhkece/club_news-46437 [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^news=46436$
+RewriteRule ^club$ /scraping/files/demo/toyheroes.net_assr.reining33_gmail.com_0cf8rhkece/club_news-46436 [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^news=46434$
+RewriteRule ^club$ /scraping/files/demo/toyheroes.net_assr.reining33_gmail.com_0cf8rhkece/club_news-46434 [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^news=46428$
+RewriteRule ^club$ /scraping/files/demo/toyheroes.net_assr.reining33_gmail.com_0cf8rhkece/club_news-46428 [L,R=301,QSD]
+
+# Create pretty URLs
+DirectorySlash Off
+
+RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+RewriteRule ^ %1 [NC,L,R=301]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} (.*)/$
+RewriteRule ^(.*)/$ $1 [NC,L,R=301]
+
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^ %{REQUEST_URI}.html [NC,L]
+# End: Create pretty URLs
+
+# Redirect all extensions to html
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule ^(.*)\.shtml$ $1.html [L,NC,R=301]
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule ^(.*)\.phtml$ $1.html [L,NC,R=301]
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule ^(.*)\.jhtml$ $1.html [L,NC,R=301]
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule ^(.*)\.htm$ $1.html [L,NC,R=301]
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule ^(.*)\.php$ $1.html [L,NC,R=301]
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule ^(.*)\.aspx$ $1.html [L,NC,R=301]
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule ^(.*)\.asp$ $1.html [L,NC,R=301]
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule ^(.*)\.jsp$ $1.html [L,NC,R=301]
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule ^(.*)\.apk$ $1.html [L,NC,R=301]
+# End: Redirect all extensions to html

@@ -1,0 +1,402 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>ToyHeroes - Online Toy Shooter</title>
+	<link rel="canonical" href="https://toyheroes.net/help" />
+        <meta name="keywords" content="toyheroes, toy, heroes, toys,free, fun, online, play, video, game, gamer, download, computer, pc, shooter, shooting, fps, tps, mmo, mmorpg, rpg, action, 3d, team, toy, war, battle, soldier, figure, stikfas, doll, story, multiplayer, single, player, clan, e-sports, global, world, gun, melee, shotgun, rifle, sniper, gatling, bazooka, grenade, death, match, deathmatch, competitive, competition, casual, core, social, smash, item, battery, shield, enamel, ammo, respawn, frag, headshot, customize, weapons, parts, chip, naomi, knox, pandora, have, reloaded, wakui, akira, brawl, buster, rock, hippo, trailer, update, register"/>
+        <meta name="description" content="Build your action figure and battle players around the world to become a ToyHeroes legend!"/>
+    <link href="css/toyheroes.css" rel="stylesheet" type="text/css">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+    <script src="js/toyheroes_quicklogin.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121881171-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-121881171-1');
+  function worldClock(zone, region) {
+    var dst = 0;
+    var time = new Date();
+    var gmtMS = time.getTime() + (time.getTimezoneOffset() * 60000);
+    var gmtTime = new Date(gmtMS);
+    var day = gmtTime.getDate();
+    var month = gmtTime.getMonth();
+    var year = gmtTime.getYear();
+    if (year < 1000) {
+        year += 1900;
+    }
+    var monthArray = new Array("January", "February", "March", "April", "May", "June", "July", "August",
+				"September", "October", "November", "December");
+    var monthDays = new Array("31", "28", "31", "30", "31", "30", "31", "31", "30", "31", "30", "31");
+    if (year % 4 == 0) {
+        monthDays = new Array("31", "29", "31", "30", "31", "30", "31", "31", "30", "31", "30", "31");
+    }
+    if (year % 100 == 0 && year % 400 != 0) {
+        monthDays = new Array("31", "28", "31", "30", "31", "30", "31", "31", "30", "31", "30", "31");
+    }
+    var hr = gmtTime.getHours() + zone;
+    var min = gmtTime.getMinutes();
+    var sec = gmtTime.getSeconds();
+    if (hr >= 24) {
+        hr = hr - 24;
+        day -= -1;
+    }
+    if (hr < 0) {
+        hr -= -24;
+        day -= 1;
+    }
+    if (hr < 10) {
+        hr = " " + hr;
+    }
+    if (min < 10) {
+        min = "0" + min;
+    }
+    if (sec < 10) {
+        sec = "0" + sec;
+    }
+    if (day <= 0) {
+        if (month == 0) {
+            month = 11;
+            year -= 1;
+        }
+        else {
+            month = month - 1;
+        }
+        day = monthDays[month];
+    }
+    if (day > monthDays[month]) {
+        day = 1;
+        if (month == 11) {
+            month = 0;
+            year -= -1;
+        }
+        else {
+            month -= -1;
+        }
+    }
+    if (region == "NAmerica") {
+        if (DST()) {
+            dst = 1;
+        }
+    }
+    if (dst == 1) {
+        hr -= -1;
+        if (hr >= 24) {
+            hr = hr - 24;
+            day -= -1;
+        }
+        if (hr < 10) {
+            hr = " " + hr;
+        }
+        if (day > monthDays[month]) {
+            day = 1;
+            if (month == 11) {
+                month = 0;
+                year -= -1;
+            }
+            else {
+                month -= -1;
+            }
+        }
+        var apm = " AM";
+        if (hr >= 12) {
+            if (hr > 12) {
+                hr = hr - 12;
+            }
+            apm = " PM";
+        }
+        return hr + ":" + min + ":" + sec + apm + " (EDT)";
+    }
+    else {
+        var apm = " AM";
+        if (hr >= 12) {
+            if (hr > 12) {
+                hr = hr - 12;
+            }
+            apm = " PM";
+        }
+        return hr + ":" + min + ":" + sec + apm + " (CET)";
+    }
+}
+function worldClockZone() {
+    var divClock = document.getElementById("clockText");
+    if (divClock) {
+        divClock.innerHTML = worldClock(2, "Europe");
+        setTimeout("worldClockZone()", 1000);
+    }
+}
+function open_signoff_dropdown() {
+        if (document.getElementById('signoff-dropdown').style.display == "block")
+            document.getElementById('signoff-dropdown').style.display = 'none';
+        else
+            document.getElementById('signoff-dropdown').style.display = "block";
+    }
+</script>
+<style>
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #272727;
+  border:1px solid #404040;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+  top:20px;
+  left:0px;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.arrow-down {
+    width: 0px;
+    height: 0px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #e8e8e8;
+    margin-left:5px;
+}
+.menulinktext:hover {
+    color:white!important;
+}
+.dottedline {
+    border:none;
+  border-bottom:1px dotted gray;
+  color:#fff;
+  height:1px;
+  width:100%;
+}
+.hoverscale:hover {
+    transform: scale(1.1);
+}
+</style>
+</style>
+</head>
+<body>
+    <div class="layout_wrapper">
+        <div class="home_header_wrapper">
+            <div class="header_top_nav">
+                <div class="nav_top_wrapper">
+                    <div class="nav_top_container">
+                        <div class="player_info">
+                            <div class="left side">
+                            </div>
+                            <div class="middle" id="mainLogin" style="position:relative;">
+                                                            <form id="mainLoginForm" action="" method="post">
+                                    <div class="ajaxLoadingMaskQuick" style="width: 100%; height: 100%; z-index: 1000; position: absolute; top: 0px; left: 0px; background-image: url(img/spacer.gif); background-repeat: repeat; display: none;">
+                                        <img alt="" class="ajaxLoading" style="margin-left: 197px; margin-top: 28px; position: absolute; height:18px; width:18px;" src="img/ajaxLoading2.gif">
+                                    </div>
+                                    <div style="position:relative; width:220px;">
+                                        <div class="login_info1">
+                                            <div class="icon_rh"></div>
+                                            <div style="margin-bottom: 2px;float: left; ">
+                                                <input onkeypress="if (event.keyCode == 13) onButtonQuickLoginClick();" name="userName" type="text" value="Login ID" onblur="if (this.value == '') {this.value = 'Login ID';}" onfocus="if (this.value == 'Login ID') {this.value = '';}" class="text_box" maxlength="16" style="color: rgb(204, 204, 204);"></div>
+                                            <div class="password" style="float: left; ">
+                                                <input id="fakepw" name="fakedPasswordInput" type="text" value="Password" onfocus="this.parentNode.style.display='none'; document.getElementById('realpw').parentNode.style.display='block'; document.getElementById('realpw').focus();" class="text_box" style="color: rgb(204, 204, 204);"></div>
+                                            <div class="password" style="display: none;float: left;">
+                                                <input onkeypress="if (event.keyCode == 13) onButtonQuickLoginClick();" id="realpw" name="password" type="password" value="" class="text_box" maxlength="32" style="color: rgb(204, 204, 204);" onblur="if (this.value == '') { this.parentNode.style.display = 'none'; document.getElementById('fakepw').parentNode.style.display='block'; }"></div>
+                                            <div id="wrong_password_board" class="wrong_password wrong_passwordid ErrorMsg" style="display: none;">
+                                                <div class="topleft"></div>
+                                                <div id="msgLogin" class="topmiddle">Invalid Login ID and/or Password.</div>
+                                                <div class="topright"></div>
+                                            </div>
+                                        </div>
+                                        <div class="login_info2">
+                                                <div class="row1">
+                                                        <a href="help" style="font-size:11px;margin-left:2px;" tabindex="1">Need help?</a>
+                                                    </div>
+                                            <div class="row1 " style=" width:85px;">
+                                                <a onclick="onButtonQuickLoginClick();" style="margin-right: 8px;" class="login2 formSubmitBtn" tabindex="0"><span class="left"></span>
+                                                    <span class="middle"><span style="position:relative;top:1px;">Login</span></span><span class="right"></span>
+                                                </a>
+                                            </div>
+                                            <div id="quickloginbuttonmask" style="position:absolute;top:21px;left:132px;width:60px;height:19px;background-color:rgb(0 0 0 / 41%);border-radius:0px;display:none"></div>
+                                        </div>
+                                    </div>
+                                </form>
+                                                            </div>
+                            <div class="right side">
+                            </div>
+                        </div>
+                        <div style="display:inline-block;float:right;position:relative;top:3px;margin-left:10px;cursor:not-allowed"><img src="img/language.png"/></div>
+                        <div style="display:inline-block;float:right;position:relative;top:7px;"><img src="img/clock1.png"/><span id="clockText" style="width: 105px;font-size: 11px;font-family: Arial, Helvetica, sans-serif;color:#999;position:relative;top:-6px;margin-left:5px;">123</span></div>
+                                            </div>
+                </div>
+            </div>
+            <div class="header_bottom">
+                <div class="home_header_middle">
+                    <a href="/">
+                        <div class="bb_logo">
+                        </div>
+                    </a>
+                </div>
+                <div class="nav">
+                    <div class="nav_container">
+                        <div class="ddsmoothmenu" id="smoothmenu1">
+                            <ul>
+                                <li>
+                                    <div class="nav_divider">
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="btn_nav_home_en">
+                                    <a href="/" class=""><span class="btn_nav_hide">Home</span></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="nav_divider">
+                                    </div>
+                                </li>
+                                <li style="margin-right:20px">
+                                    <div class="btn_nav_download_en">
+                                        <a href="download" class=""><span class="btn_nav_hide">Download</span></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="nav_divider">
+                                    </div>
+                                </li>
+                                <li style="margin-right:20px">
+                                    <div class="btn_nav_clubhouse_en">
+                                        <a href="club_player" class=""><span class="btn_nav_hide">Club House</span></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="nav_divider">
+                                    </div>
+                                </li>
+                                <li style="margin-right:20px">
+                                    <div class="btn_nav_guide_en">
+                                        <a href="guide" class=""><span class="btn_nav_hide">Guide</span></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="nav_divider">
+                                    </div>
+                                </li>
+                                <li style="margin-right:20px">
+                                    <div class="btn_nav_media_en">
+                                        <a href="media" class=""><span class="btn_nav_hide">Media</span></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="nav_divider">
+                                    </div>
+                                </li>
+                                <li style="margin-right:20px">
+                                    <div class="btn_nav_support_en">
+                                        <a href="support" class=""><span class="btn_nav_hide">Support</span></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="nav_divider">
+                                    </div>
+                                </li>
+                                <li style="margin-right:20px">
+                                    <div class="btn_nav_deposit_en">
+                                        <a href="purchase" class=""><span class="btn_nav_hide">Charge RT</span></a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>worldClockZone();</script>
+        <script>
+        function select_main_nav(name)
+        {
+            document.getElementsByClassName(name)[0].style.backgroundPosition = '0px bottom'
+        }
+        </script>
+        <div class="main_content_wrapper">
+<link href="css/toyheroes_register.css" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Open+Sans&amp;display=swap" rel="stylesheet">
+<script src="js/toyheroes_reset.js"></script>
+<style>
+.helptitle {
+    font-family: 'Open Sans', Arial;
+    font-size:25px;
+    font-weight:600
+}
+.helpbutton {
+    background-color: #13abe4;
+    width:400px;
+    height:50px;
+    display:inline-block;
+    background-size: contain;
+    border-radius:5px;
+    box-shadow: 3px 3px 2px 1px rgb(22 22 22 / 22%);
+}
+.helplink {
+    color:black;
+    font-size:17px;
+    font-family: 'Open Sans', Arial;
+    color:white;
+    position:relative;
+    top:25%;
+}
+.helplink:hover {
+    color:#e5e5e5;
+}
+</style>
+<div class="bottom_wrapper" style="background-image: url('img/media/bg.png');overflow:hide">
+<div class="reg_form_container" style="margin-left:230px;margin-top:50px;">
+        <div class="section1">
+        </div>
+        <div class="section2">
+            <div style="text-align:center">
+                <div style="height:20px;"></div>
+                <span class="helptitle">Trouble logging in?</span>
+                <div style="height:40px;"></div>
+                <div class="helpbutton">
+                    <a href="reset" class="helplink">Recover Login ID or Password</a>
+                </div>
+                <div style="height:20px;"></div>
+                <div class="helpbutton">
+                    <a href="reset2fa" class="helplink">Disable Two Factor Authentication (2FA)</a>
+                </div>
+                <div style="height:20px;"></div>
+            </div>
+        </div>
+        <div class="section3">
+        </div>
+</div>
+</div>
+<div class="footer_wrapper">
+    <div class="footer_container">
+        <div>
+            <img style="height: 79px;width:171px;position:relative;top:-22px;" src="img/esrb_logo.jpg">
+        </div>
+        <div>
+            <img style="width: 254px;height: 75px;position:relative;top:-22px;" src="img/pegi_logo.png">
+        </div>
+        <div class="eptmedia_logo">
+            <img src="img/footer_rh_logo.png" style="height:31px;width: 116px;margin-left:5px;"></div>
+        <div class="nq_logo">
+                <img src="img/footer_logo_nqgames.png" style="height:31px;width: 116px;margin-left:5px;"></div>
+        <div style="float: right;height: 30px;margin-right: 25px;width: 200px;margin-top:5px;">
+            <a href="http://internetdealerservices.com" style="font-size:12px;text-decoration: underline;margin-right:15px;margin-left:15px;color: #D3D3D3;">Terms of Service</a>
+            <a href="tos" style="font-size:12px;text-decoration: underline;color: #D3D3D3;">Privacy Policy</a>
+        </div>
+        <div style="width: 1px; height: 1px; display: none">
+            <img style=" width:1px; height:1px; " src="https://toyheroes.net/help" alt="">
+        </div>
+    </div>
+</div>
+</body>
+</html>
